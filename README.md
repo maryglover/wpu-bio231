@@ -1,3 +1,7 @@
+---
+title: BIO 231: Environmental Topics and Data Analysis
+---
+
 ### Evaluating the water quality of local streams
 
 This semester, students will evaluate the quality of local water ways using data analysis of large water quality data sets and physical, chemical, and invertebrate assessments in the field. 
