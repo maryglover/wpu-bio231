@@ -1,7 +1,6 @@
 ---
 title: 'BIO 231: Environmental Topics and Analysis'
 author: "Dr. Mary Glover"
-date: "Spring 2024"
 ---
 
 # Course information
