@@ -1,5 +1,5 @@
 ---
-title: BIO 231: Environmental Topics and Data Analysis
+title: BIO 231 Environmental Topics and Data Analysis
 ---
 
 ### Evaluating the water quality of local streams
