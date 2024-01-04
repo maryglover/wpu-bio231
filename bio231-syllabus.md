@@ -7,7 +7,7 @@ output:
 layout: default
 ---
 
-# Course information
+# Course information  {.tabset}
 
 **Instructor**: Dr. Mary Glover                                               
 
@@ -99,7 +99,7 @@ To download the desktop app, go to <http://www.slack.com>. Students will receive
 
 IMPORTANT NOTE: Confidential information should not be discussed in slack, as slack is not FERPA compliant. Please discuss sensitive information, via email.
 
-# Course components
+# Course components  {.tabset}
 
 Student grades will be calculated by using a percentage system. All grades will be recorded in Moodle including your current course grade.
 
@@ -147,7 +147,7 @@ Students will be graded on:
 
 Full details of assignments will be provided on moodle and communicated via email each week. The full schedule of topics will be a fluid document throughout the course to ensure that students have mastered course topics before moving on and to work around weather for field work. All changes will be communicated with students and students will have details for assignments due at least one week in advance.
 
-# Course policies
+# Course policies  {.tabset}
 
 ## Student expectations
 
