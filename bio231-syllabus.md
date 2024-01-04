@@ -1,5 +1,6 @@
 ---
 title: 'BIO 231: Environmental Topics and Analysis'
+subtitle: 'Spring 2024'
 author: "Dr. Mary Glover"
 output:
   html_document
