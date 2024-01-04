@@ -1,0 +1,29 @@
+---
+title: "BIO 231 Introduction activity"
+author: "Dr. Mary Glover"
+date: "Week 1"
+output:
+  html_document:
+    df_print: paged
+---
+
+## Learning objectives
+
+- Describe the scientific method
+- Differentiate between different types of data
+- Organize data in "tidy" format
+
+In class today, students will work in teams to:
+
+1. Develop a research question
+1. Collect and record data
+1. Organize data
+1. Graph data
+1. From conclusions
+
+## Resources
+
+[Example data](https://drive.google.com/file/d/1UhwUoHU4-L_rMyP7IrcqiKIDefpBlm9t/view?usp=drive_link)
+
+[R script](testing.R)
+
