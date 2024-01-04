@@ -7,7 +7,7 @@ output:
 layout: default
 ---
 
-# Course information  {.tabset}
+# Course information
 
 **Instructor**: Dr. Mary Glover                                               
 
@@ -21,18 +21,26 @@ layout: default
 
 Global environmental problems are complex and interrelated. This course provides the groundwork necessary to understand these interactions. Students investigate and analyze natural and human-influenced ecosystems, gather and analyze data, and gain a broader appreciation for the intersection of science, nature, and human society as it relates to environmental issues. The course will include field-based experiences depending upon the focus of the course in a given semester. Offered spring of even numbered years. Prerequisite: “C” or better in BIO 131.
 
+## Course topic
+
+This semester, students will be exploring the water quality of streams in Raleigh. We will use water quality as a case study while working on data analysis and scientific writing learning objectives. Students will:
+
+- Evaluate and map water quality of streams in Raleigh using government datasets
+- Collect water quality measurements in 1-2 local streams, including physical and chemical characteristics in the field and in the lab. 
+- Sample aquatic macroinvertebrates in 2-3 local streams as indicators of stream quality.
+
 ## Course learning objectives
 
-By the end of the course, students can expect to:
+By the end of the course, students can expect to successfully:
 
 **Analyze data in R**
 
-- Import data into Rstudio
+- Import data into R
 - Manipulate data into a format that can be analyzed
 - Calculate summary statistics
 - Determine the best type of graph to display data and plot figures
 - Test hypotheses with simple statistical tests
-- Interpret results and form conclusions.
+- Interpret results and form conclusions
 
 **Communicate research and findings**
 
@@ -44,16 +52,8 @@ By the end of the course, students can expect to:
 
 - Describe human activities that impact water quality in Wake County
 - Measure water quality with field and lab tests (nutrients, dissolved oxygen, turbidity, pH)
-- Identify aquatic invertebrate species and calculate bioassessment index
+- Identify aquatic invertebrate species and calculate a bioassessment index
 - Interpret data to evaluate overall water quality in local streams
-
-## Course topic
-
-This semester, students will be exploring the water quality of streams in Raleigh. We will use water quality as a case study while working on data analysis and scientific writing learning objectives. Students will:
-
-- Evaluate and map water quality of streams in Raleigh using government datasets
-- Collect water quality measurements in 1-2 local streams, including physical and chemical characteristics in the field and in the lab. 
-- Sample aquatic macroinvertebrates in 2-3 local streams as indicators of stream quality.
 
 ## Course resources
 
@@ -61,45 +61,40 @@ This semester, students will be exploring the water quality of streams in Raleig
 
 There is no required textbook for this course. Resources and readings will be provided to students throughout the semester. 
 
-[R for Data Science](https://r4ds.hadley.nz/) by Hadley Wickham is an excellent introduction and resource for using R software for data analysis. This is a free online textbook. 
+[R for Data Science](https://r4ds.hadley.nz/) is an excellent introduction and resource for using R software for data analysis. This is a free online textbook. 
 
 ### Technological requirements
 
-In order to be successful in this class, students should have access to a personal computer  with internet access. Students will use the computer for data analysis in class. A tablet will not work for this class.  If you do not, please contact Dr. Glover ASAP. 
+In order to be successful in this class, students should have access to a personal laptop computer with internet access. Students will use the computer for data analysis in class. *A tablet will not work for this class*.  If you do not, please contact Dr. Glover ASAP. 
 
 ### Moodle
 
-Moodle is the WPU course management system. Any resources that students need will be linked through moodle, as well as an up to date schedule of classes and assignments. Grades will be continuously updated in the gradebook. 
+Moodle is the WPU course management system. Resources that students need will be linked through moodle, as well as an up-to-date schedule of topics and assignments. Grades will be continuously updated in the gradebook. 
 
 ### R and Rstudio
 
-R is a coding language (think python, C++, etc.) commonly used for data science, environmental science, and ecology. Students will use R and the software Rstudio, an interface completing projects using R, for data analysis in class. 
+R is a coding language (think python, C++, etc.) commonly used for data science, environmental science, and ecology. Students will use R and the software Rstudio, a user-friendly interface for working in R, for data analysis in class. 
 
-To complete assignments, students will need to download R and Rstudio on their personal computer which they bring to class. Installation details can be found [here](https://posit.co/download/rstudio-desktop/), and will be discussed in class. Both R and Rstudio are free. Students should not purchase any Rstudio products.
+To complete assignments, students will need to download R and Rstudio on their personal computer which they will bring to class. Installation details can be found [here](https://posit.co/download/rstudio-desktop/), and will be discussed in class. Both R and Rstudio are free. *Students should not purchase any Rstudio products.*
 
 ### Google
 
-WPU provides a google account with your login where you can access your university email.  We will use the google applications for:
+WPU provides a google account with your WPU login.  We will use the google applications for:
 
-- Data management: Data files will be shared using google drive.
+- Data management: Data files will be shared and organized using google drive.
 - Presentation: Students will create a poster presentation using google slides.
 
 ### Slack
 
-Slack is a communication platform which can be accessed through an internet browser, desktop client, or mobile app. In this course, we will use slack for:
+Slack is a communication platform which can be accessed through an internet browser, desktop client, or mobile app. In this course, we will use slack for troubleshooting R code in class. 
 
-- General communication between the instructor and students 
-- Sharing R code
-- Sharing interesting and relevant articles
-- Collaboration and organization in group assignments
+Students are encouraged to ask questions and to engage in slack. Slack will provide a simpler and quicker way to share code during class data analysis activities. 
 
-Students are encouraged to ask questions and to engage in slack. Slack will provide a simpler and quicker way to troubleshoot and share code during class data analysis activities. 
-
-To download the desktop app, go to <http://www.slack.com>. Students will receive a link for our class slack. 
+Slack can be used as a web appliation or you can download a desktop app. To download the desktop app, go to <http://www.slack.com>. Students will receive a link for our class slack workspace the first week in class.
 
 IMPORTANT NOTE: Confidential information should not be discussed in slack, as slack is not FERPA compliant. Please discuss sensitive information, via email.
 
-# Course components  {.tabset}
+# Course components
 
 Student grades will be calculated by using a percentage system. All grades will be recorded in Moodle including your current course grade.
 
@@ -118,15 +113,15 @@ Assignment re-grading must be requested through email within 5 days of receiving
 
 ## Data collection (10%)
 
-As a part of the water quality class project, students will measure a variety of water quality metrics of local streams, both in the field and with lab tests. Students are expected to carefully and accurately collect data, record measurements, and make observations. Students will be responsible for transportation to field locations, but carpooling will be discussed in class.  
+As a part of the water quality class project, students will measure a variety of water quality metrics of local streams, both in the field and with lab tests. Students are expected to carefully and accurately collect data, record measurements, and make observations. **Students will be responsible for transportation to field locations, but carpooling will be discussed in class.**  
 
 ## Scientific writing (30%)
 
-A large focus of this course will be reading scientific articles and scientific writing. Students will practice scientific writing throughout the semester during data analysis projects both in and out of class. Students will practice a variety of scientific writing formats including informative essays for non-experts, scientific reports, infographics with figures, etc. Students will receive regular feedback on writing assignments from peers and instructors.
+A large focus of this course will be reading scientific articles and scientific writing. Students will practice scientific writing throughout the semester during data analysis projects both in and out of class. The class will include a variety of  writing formats including informative essays for non-experts, scientific reports, and infographics with figures. Students will receive regular feedback on writing assignments from peers and instructors. 
 
 ## Data analysis exams (35%)
 
-To assess data analysis skills, students will have two in class, open note, data analysis exams. In the exams, students will be given a dataset which they will analyze and answer questions about. With the data, students may be asked to plot, calculate summary statistics, and write conclusions.
+To assess data analysis skills, students will have two in-class, open note, data analysis exams. Students will be given a dataset which they will analyze and report results. With the data, students may be asked to plot, calculate summary statistics, and write conclusions.
 
 ## Research presentation (15%)
 
@@ -139,24 +134,23 @@ Students are expected to be engaged and actively participate during class and wi
 Students will be graded on:
 
 - Regular class attendance
-- Contribution to class discussions and activities.
+- Contribution to class discussions and activities
 - Effective use of class time 
 - Completion of class activities
 
 ## Course schedule
 
-Full details of assignments will be provided on moodle and communicated via email each week. The full schedule of topics will be a fluid document throughout the course to ensure that students have mastered course topics before moving on and to work around weather for field work. All changes will be communicated with students and students will have details for assignments due at least one week in advance.
+Full details of assignments will be provided on moodle and communicated via email each week. The full schedule of topics will be a fluid document throughout the course to ensure that students have mastered course topics before moving on and to work around weather for field work. All changes will be communicated with students and students will have details for assignments at least one week before they are due.
 
-# Course policies  {.tabset}
+# Course policies
 
 ## Student expectations
 
-Students are expected to attend each class session and to actively participate during class. Students will be assigned background readings and writing assignments for homework, but much of the data analysis and R coding will be completed in class. Coding can be tricky (a missing comma can break your code!) so students should use class time effectively -- in class students can work together or get help from the instructor. 
+Students are expected to attend each class session and to actively participate during class. Students will be assigned background readings and writing assignments for homework, but much of the data analysis and R coding will be completed in class. Coding can be tricky (a missing comma can break your code!) so students should use class time effectively -- in class students can use time to work together or get help from the instructor. 
 
 ## Attendance
 Class attendance is necessary to be successful in this course. Many of the course assignments and activities will take place in class. Furthermore, it is the student’s responsibility to obtain class notes when absent. 
-Students must be present for the majority of the class period (50 minutes) to be considered present. When possible, please contact Dr. Glover prior to a missed class via email, to ensure that you remain on track in the course. Written documentation of excused absence (i.e. illness, court appearance, school approved athletic event) must be submitted to the professor within 3 business days from the missed date of class.
-Please be advised the University mandates that students attend 80% of the class meetings in order to pass the course.
+Students must be present for most of the class period (90 minutes) to be considered present. When possible, please contact Dr. Glover *prior* to a missed class via email, to ensure that you remain on track in the course. Written documentation of excused absence (i.e. illness, court appearance, school approved athletic event) must be submitted to the professor within 3 business days from the missed date of class. Please be advised the University mandates that students attend 80% of the class meetings in order to pass the course.
 
 For student athletes, it is the student’s responsibility to communicate regarding approved absences (university sponsored events and competitions, but not practices) in a timely manner so that work can be completed in advance. Students will not be excused from assignments and will not receive extensions or make up exams unless discussed with the instructor at least one week in advance. 
 
@@ -167,6 +161,10 @@ Timely completion of assignments and activities is crucial for success in this c
 Assignments completed in class or in groups must be submitted on time to receive credit.
 
 Due dates for assignments are provided on Moodle and on the course schedule. Students will also receive a reminder of assignments due before the start of the week. No assignments submitted after the last day of class will receive credit for a grade. *If a student consistently turns in class work late, they will be required to meet with the instructor to discuss.* 
+
+## Code sharing
+
+In addition to scientific writing, students will be writing R code. Students are expected to uphold the academic integrity policy in their code. Unless stated otherwise, all code written should be the student's own. Students are encouraged to work together and can use online resources (such as stack overflow) for issues, but should write their code independently. **Student's may not share R scripts.**
 
 ## Additional policies
 
