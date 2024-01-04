@@ -1,6 +1,8 @@
 ---
 title: 'BIO 231: Environmental Topics and Analysis'
 author: "Dr. Mary Glover"
+output:
+  html_document
 ---
 
 # Course information
