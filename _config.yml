@@ -1,2 +1,4 @@
 name: Environmental Topics and Data Analysis
 theme: jekyll-theme-cayman
+github:
+  is_project_page: false
