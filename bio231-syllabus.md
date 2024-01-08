@@ -86,7 +86,7 @@ WPU provides a google account with your WPU login.  We will use the google appli
 
 ### Slack
 
-Slack is a communication platform which can be accessed through an internet browser, desktop client, or mobile app. In this course, we will use slack for troubleshooting R code in class. 
+Slack is a communication platform which can be accessed through an internet browser, desktop client, or mobile app. In this course, we will use slack for troubleshooting R code in class. **For information on how slack will be used in the course see [here](slack_how_to).**
 
 Students are encouraged to ask questions and to engage in slack. Slack will provide a simpler and quicker way to share code during class data analysis activities. 
 
