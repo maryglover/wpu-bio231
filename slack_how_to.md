@@ -27,7 +27,7 @@ Slack can be used on an internet browser, a desktop client, or a mobile app.
 
 ## Set up slack profile
 
-The first thing that you should do is set up your profile in slack. You can do this by clicking the person icon at the top right-hand corner. Then click "Profile"
+The first thing that you should do is set up your profile in slack. You can do this by clicking the person icon at the bottom left-hand corner. Then click "Profile"
  
 Then you should fill in your information, including your name,  pronouns, and a picture if you wish.
 
