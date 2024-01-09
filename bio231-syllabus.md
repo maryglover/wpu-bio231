@@ -1,5 +1,5 @@
 ---
-title: 'BIO 231: Environmental Topics and Analysis'
+title: 'Syllabus'
 subtitle: 'Spring 2024'
 author: "Dr. Mary Glover"
 output:

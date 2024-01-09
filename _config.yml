@@ -1,10 +1,5 @@
-name: Environmental Topics and Data Analysis
+name: Environmental Topics and Analysis
+description: BIO 231: Environmental Topics and Analysis
 theme: jekyll-theme-cayman
 github:
   is_project_page: false
-sidebar:
-  - label: Section One
-    children:
-      - document-one
-      - document-two
-      - document-three

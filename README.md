@@ -14,7 +14,8 @@ At the end of the semester, students can expect to be able to:
 
 **For full details, please see the [syllabus](bio231-syllabus).**
 
-[R file](testing.R)
+[![syllabus](images/syllabus.png)](bio231-syllabus)
+
 
 
 
