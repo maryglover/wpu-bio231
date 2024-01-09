@@ -142,6 +142,16 @@ Students will be graded on:
 
 Full details of assignments will be provided on moodle and communicated via email each week. The full schedule of topics will be a fluid document throughout the course to ensure that students have mastered course topics before moving on and to work around weather for field work. All changes will be communicated with students and students will have details for assignments at least one week before they are due.
 
+### Important semester dates
+
+1/23: Last day to drop
+2/15: **Exam 1**
+2/22: Field collections @ Crabtree Creek
+2/27: Field collections @ Prairie Ridge 
+3/27: Last day to withdraw with “W”
+Presentations with City of Raleigh Stormwater Dept. Late April (TBD)
+5/3: **Exam 2** 8:00 AM
+
 # Course policies
 
 ## Student expectations
