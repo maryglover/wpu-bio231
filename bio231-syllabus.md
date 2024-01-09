@@ -62,7 +62,7 @@ By the end of the course, students can expect to successfully:
 There is no required textbook for this course. Resources and readings will be provided to students throughout the semester. 
 
 [R for Data Science](https://r4ds.hadley.nz/) is an excellent introduction and resource for using R software for data analysis. This is a free online textbook. 
-
+åç
 ### Technological requirements
 
 In order to be successful in this class, students should have access to a personal laptop computer with internet access. Students will use the computer for data analysis in class. *A tablet will not work for this class*.  If you do not, please contact Dr. Glover ASAP. 
@@ -100,12 +100,12 @@ Student grades will be calculated by using a percentage system. All grades will 
 
 Component | Percentage of grade
 :-------- | :---------
-Project 1 | 25%
-Project 2 | 15%
-Project 3| 30%
+Project 1: Introduction to R, data, and scientific writing| 25%
+Project 2: Measuring water quality in the field and lab | 15%
+Project 3: Evaluating water quality project and presentation| 30%
 Data analysis exams (10% each)| 20%
 Participation | 10%
-Total | 100%
+*Total* | *100%*
 
 *Grading scale: A: 90 - 100%, B: 80 – 89.9%, C: 70 – 79.9%, D: 60 – 69.9%, F: < 60%*
 
@@ -121,7 +121,7 @@ Students will measure a variety of water quality metrics of local streams, both 
 
 **Students will be responsible for transportation to field locations, but carpooling will be discussed in class.** Dates for field collections are tentatively scheduled as February 22, February 27, and April 25. Dates may change depending on weather conditions or class schedules. Students will be expected to go in the field if there is light rain, but field days will be rescheduled for major weather events. 
 
-## Project 3: Water quality projet and presentation (30%)
+## Project 3: Evaluating water quality projet and presentation (30%)
 
 We will work with water quality data from the City of Raleigh to assess the quality of local streams. Students will work in groups to develop research questions and perform a data analysis from start to finish with the data. In this project, students will be introduced to more advanced R skills, including creating maps. Specific assignments and due dates will be determined collabartively with students later in the semester. 
 
@@ -149,12 +149,19 @@ Full details of assignments will be provided on moodle and communicated via emai
 ### Important semester dates
 
 1/23: Last day to drop
+
 2/15: **Exam 1**
+
 2/22: Field collections @ Crabtree Creek
+
 2/27: Field collections @ Prairie Ridge 
+
 3/27: Last day to withdraw with “W”
+
 4/25: Field collection day (TBD)
+
 Presentations with City of Raleigh Stormwater Dept. Late April (TBD)
+
 5/3: **Exam 2** 8:00 AM
 
 # Course policies
