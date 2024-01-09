@@ -100,10 +100,10 @@ Student grades will be calculated by using a percentage system. All grades will 
 
 Component | Percentage of grade
 :-------- | :---------
-Data collection | 10%
-Scientific writing | 30%
-Research project presentation | 15%
-Data analysis exams (15% + 20%) | 35%
+Project 1 | 25%
+Project 2 | 15%
+Project 3| 30%
+Data analysis exams (10% each)| 20%
 Participation | 10%
 Total | 100%
 
@@ -111,25 +111,29 @@ Total | 100%
 
 Assignment re-grading must be requested through email within 5 days of receiving your grade.  Please email Dr. Glover with justification for your re-grade.
 
-## Data collection (10%)
+## Project 1: Introduction to R, data, and scientific writing (25%)
 
-As a part of the water quality class project, students will measure a variety of water quality metrics of local streams, both in the field and with lab tests. Students are expected to carefully and accurately collect data, record measurements, and make observations. **Students will be responsible for transportation to field locations, but carpooling will be discussed in class.**  
+In the first few weeks of class, students will learn the basics of data analysis using R programming and be introduced to reading and writing scientific literature. Students will work through class activities to learn data analysis skills which will be used for larger projects for the semester. At the end of this project, students will create an summary of what they have learned. 
 
-## Scientific writing (30%)
+## Project 2: Measuring water quality in the field and lab (15%)
 
-A large focus of this course will be reading scientific articles and scientific writing. Students will practice scientific writing throughout the semester during data analysis projects both in and out of class. The class will include a variety of  writing formats including informative essays for non-experts, scientific reports, and infographics with figures. Students will receive regular feedback on writing assignments from peers and instructors. 
+Students will measure a variety of water quality metrics of local streams, both in the field and with lab tests. Students are expected to carefully and accurately collect data, record measurements, and make observations. Students will analyze the data they collect and create a scientific poster.
 
-## Data analysis exams (35%)
+**Students will be responsible for transportation to field locations, but carpooling will be discussed in class.** Dates for field collections are tentatively scheduled as February 22, February 27, and April 25. Dates may change depending on weather conditions or class schedules. Students will be expected to go in the field if there is light rain, but field days will be rescheduled for major weather events. 
 
-To assess data analysis skills, students will have two in-class, open note, data analysis exams. Students will be given a dataset which they will analyze and report results. With the data, students may be asked to plot, calculate summary statistics, and write conclusions.
+## Project 3: Water quality projet and presentation (30%)
 
-## Research presentation (15%)
+We will work with water quality data from the City of Raleigh to assess the quality of local streams. Students will work in groups to develop research questions and perform a data analysis from start to finish with the data. In this project, students will be introduced to more advanced R skills, including creating maps. Specific assignments and due dates will be determined collabartively with students later in the semester. 
 
-Students will create a scientific poster summarizing their class research project on the local water quality. The posters will consist of an introduction, methods, results, and discussion section, utilize credible scientific sources, and include graphs of data collected throughout the semester. 
+Using results from student data projects and literature research, students will create a final project to present their results to the City of Raleigh.
+
+## Data analysis exams (20%)
+
+To assess data analysis skills, students will have *two* in-class, open note, data analysis exams. Students will be given a dataset which they will analyze and report results. With the data, students may be asked to plot, calculate summary statistics, and write conclusions.
 
 ## Participation (10%)
 
-Students are expected to be engaged and actively participate during class and will be graded accordingly. Much of the student learning will happen through participation in in-class activities, including data analysis and coding, graphing, data collection, peer reviews, and writing assignments. 
+Students are expected to be engaged and actively participate during class and will be graded accordingly. Much of the student learning will happen through participation in in-class activities, including data analysis and coding, graphing, data collection, peer reviews, and writing assignments. Participation will be graded twice, once at the midterm and once at the end of the semester.
 
 Students will be graded on:
 
@@ -149,6 +153,7 @@ Full details of assignments will be provided on moodle and communicated via emai
 2/22: Field collections @ Crabtree Creek
 2/27: Field collections @ Prairie Ridge 
 3/27: Last day to withdraw with “W”
+4/25: Field collection day (TBD)
 Presentations with City of Raleigh Stormwater Dept. Late April (TBD)
 5/3: **Exam 2** 8:00 AM
 
