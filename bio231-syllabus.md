@@ -25,9 +25,9 @@ Global environmental problems are complex and interrelated. This course provides
 
 This semester, students will be exploring the water quality of streams in Raleigh. We will use water quality as a case study while working on data analysis and scientific writing learning objectives. Students will:
 
-- Evaluate and map water quality of streams in Raleigh using government datasets
-- Collect water quality measurements in 1-2 local streams, including physical and chemical characteristics in the field and in the lab. 
-- Sample aquatic macroinvertebrates in 2-3 local streams as indicators of stream quality.
+- Evaluate and map water quality of streams in Raleigh 
+- Collect water quality measurements in local streams, including physical and chemical characteristics in the field and in the lab. 
+- Present and share results with City of Raleigh 
 
 ## Course learning objectives
 
@@ -148,21 +148,14 @@ Full details of assignments will be provided on moodle and communicated via emai
 
 ### Important semester dates
 
-1/23: Last day to drop
-
-2/15: **Exam 1**
-
-2/22: Field collections @ Crabtree Creek
-
-2/27: Field collections @ Prairie Ridge 
-
-3/27: Last day to withdraw with “W”
-
-4/25: Field collection day (TBD)
-
-Presentations with City of Raleigh Stormwater Dept. Late April (TBD)
-
-5/3: **Exam 2** 8:00 AM
+- 1/23: Last day to drop
+- 2/15: **Exam 1**
+- 2/22: Field collections @ Crabtree Creek
+- 2/27: Field collections @ Prairie Ridge 
+- 3/27: Last day to withdraw with “W”
+- 4/25: Field collection day (TBD)
+- Presentations with City of Raleigh Stormwater Dept. Late April (TBD)
+- 5/3: **Exam 2** 8:00 AM
 
 # Course policies
 
