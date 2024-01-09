@@ -19,8 +19,7 @@ At the end of the semester, students can expect to be able to:
 
 **For full details, please see the [syllabus](bio231-syllabus).**
 
-[![syllabus](images/syllabus.png)](bio231-syllabus)
-
+[![syllabus](images/syllabus.png){ width=50% }](bio231-syllabus)
 
 
 
