@@ -2,3 +2,9 @@ name: Environmental Topics and Data Analysis
 theme: jekyll-theme-cayman
 github:
   is_project_page: false
+sidebar:
+  - label: Section One
+    children:
+      - document-one
+      - document-two
+      - document-three
