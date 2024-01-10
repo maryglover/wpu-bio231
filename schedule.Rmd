@@ -1,7 +1,8 @@
 ---
 title: "Course schedule"
-output: html_document
-layout: default
+output:
+  prettydoc::html_pretty:
+    theme: cayman
 ---
 
 Schedule subject to change. All changes will be announced to students. *Unless noted otherwise, all assignments are due at the beginning of class*
