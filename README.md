@@ -1,10 +1,6 @@
----
-title: 'Welcome to BIO 231!'
----
+# Welcome to BIO 231!
 
-## Spring 2024 
-
-### Evaluating the water quality of local streams
+### Spring 2024: Evaluating the water quality of local streams
 
 This semester, students will evaluate the quality of local water ways using data analysis of large water quality data sets and physical, chemical, and invertebrate assessments in the field. 
 
