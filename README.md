@@ -1,8 +1,5 @@
 ---
 title: 'Welcome to BIO 231!'
-output:
-  html_document
-layout: default
 ---
 
 ## Spring 2024 
