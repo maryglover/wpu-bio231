@@ -1,4 +1,9 @@
-# Welcome to BIO 231!
+---
+title: 'Welcome to BIO 231!'
+output:
+  html_document
+layout: default
+---
 
 ## Spring 2024 
 
@@ -14,4 +19,8 @@ At the end of the semester, students can expect to be able to:
 
 **For full details, please see the [syllabus](bio231-syllabus).**
 
-<a href="/bio231-syllabus.html"> <img src="images/syllabus.png width=50%"></a>
+<a href="bio231-syllabus"> <img src="images/syllabus.png" width=50%></a>
+
+
+
+
