@@ -12,5 +12,7 @@ At the end of the semester, students can expect to be able to:
 
 <a href="bio231-syllabus"> <img src="./images/syllabus.png" width='25%'></a>
 
+<a href="schedule.html"> <img src="./images/schedule.png" width='25%'></a>
+
 
 
