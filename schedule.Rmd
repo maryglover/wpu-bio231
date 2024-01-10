@@ -1,0 +1,14 @@
+---
+title: "Course schedule"
+output: html_document
+layout: default
+---
+
+Schedule subject to change. All changes will be announced to students. *Unless noted otherwise, all assignments are due at the beginning of class*
+
+```{r, echo=FALSE}
+schedule <- read.csv('schedule.csv')
+options(knitr.kable.NA=' ')
+knitr::kable(schedule)
+
+```

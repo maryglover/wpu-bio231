@@ -1,0 +1,26 @@
+---
+title: "Introduction"
+author: "BIO 231: Environmental topics and data analysis"
+format:
+  revealjs: 
+    theme: simple
+editor: visual
+---
+
+## Welcome to BIO 231!
+
+Environmental Topics and Data Analysis
+
+Dr. Glover
+
+------------------------------------------------------------------------
+
+## Agenda
+
+1.  Introduction
+2.  Scientific experiment activity
+3.  Course details and syllabus review
+
+------------------------------------------------------------------------
+
+## Slide 3
