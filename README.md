@@ -12,8 +12,3 @@ At the end of the semester, students can expect to be able to:
 
 <a href="bio231-syllabus"> <img src="./images/syllabus.png" width='25%'></a> <a href="weekly-assignments"> <img src="./images/schedule.png" width='25%'></a>  <a href="https://env231-sp24.slack.com"> <img src="./images/slack.png" width='25%'></a>
 
-|   |   |   |
-|---|---|---|
-|<a href="bio231-syllabus"> <img src="./images/syllabus.png" width='25%'></a>|<a href="weekly-assignments"> <img src="./images/schedule.png" width='25%'></a> | <a href="https://env231-sp24.slack.com"> <img src="./images/slack.png" width='25%'></a>
-
-
