@@ -10,9 +10,6 @@ At the end of the semester, students can expect to be able to:
 1. Communicate original research findings to a variety of audiences. 
 1. Evaluate water quality using field and lab tests. 
 
-<a href="bio231-syllabus"> <img src="./images/syllabus.png" width='25%'></a>
-
-<a href="schedule.html"> <img src="./images/schedule.png" width='25%'></a>
-
+<a href="bio231-syllabus"> <img src="./images/syllabus.png" width='25%'></a> <a href="schedule.html"> <img src="./images/schedule.png" width='25%'></a>
 
 
