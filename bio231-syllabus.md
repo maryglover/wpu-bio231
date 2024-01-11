@@ -144,7 +144,7 @@ Students will be graded on:
 
 ## Course schedule
 
-Full details of assignments will be provided on moodle and communicated via email each week. The full schedule of topics will be a fluid document throughout the course to ensure that students have mastered course topics before moving on and to work around weather for field work. All changes will be communicated with students and students will have details for assignments at least one week before they are due.
+Full details of will be kept in Moodle and can be found here: **[BIO 231 Schedule of Assignments](schedule.html).** The full schedule of topics will be a fluid document throughout the course to ensure that students have mastered course topics before moving on and to work around weather for field work. All changes will be communicated with students and students will have details for assignments at least one week before they are due.
 
 ### Important semester dates
 
