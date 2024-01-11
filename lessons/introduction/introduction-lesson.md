@@ -15,7 +15,7 @@ layout: default
 
 ## Class materials 
 
-Link to slides
+[Link to slides](introduction-slides)
  
 ## Homework 
 
