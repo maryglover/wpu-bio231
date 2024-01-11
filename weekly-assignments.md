@@ -11,4 +11,4 @@ Week | Date | Topic
 :----- | ------ | ------
 Week 1 | Thursday 1/17 | [Experimental design and introduction](lessons/introduction/introduction-lesson)
 Week 2 | Tuesday 1/23 | Basic R
-|| Thursday 1/25 | Data manipulation and tidy data
+ | Thursday 1/25 | Data manipulation and tidy data
