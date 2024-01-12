@@ -194,7 +194,7 @@ rhago %>%
 
 ## Create figures
 
-![](slide-images/Figure 6 Humidity.jpg)
+![](slide-images/Figure%206%20Humidity.jpg)
 
 ------------------------------------------------------------------------
 
@@ -208,7 +208,7 @@ rhago %>%
 
 ## ![](slide-images/Figure%204%20Midwest.jpg)
 
-------
+------------------------------------------------------------------------
 
 ## Design websites and files
 

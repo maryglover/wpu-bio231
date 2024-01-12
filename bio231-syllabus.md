@@ -1,9 +1,10 @@
 ---
-title: 'Syllabus'
-subtitle: 'Spring 2024'
+title: "Syllabus"
 author: "Dr. Mary Glover"
+subtitle: Spring 2024
 output:
-  html_document
+  pdf_document: default
+  html_document: default
 layout: default
 ---
 
