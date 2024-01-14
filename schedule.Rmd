@@ -5,7 +5,9 @@ output:
     theme: cayman
 ---
 
-Schedule subject to change. All changes will be announced to students. *Unless noted otherwise, all assignments are due at the beginning of class*
+Schedule subject to change. All changes will be announced to students. 
+
+*Unless noted otherwise, all assignments are due at the* ***beginning*** *of class*
 
 ```{r, echo=FALSE}
 schedule <- read.csv('schedule.csv')
