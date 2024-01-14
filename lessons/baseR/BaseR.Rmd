@@ -1,0 +1,71 @@
+---
+title: 'Using R'
+output:
+  html_document
+layout: default
+---
+
+By the end of this lesson, you should be able to:
+
+- Navigate Rstudio
+- Run code from console notebook
+- Perform mathematical operations in R
+- Assign variables
+- Describe different data types
+- Understand the purpose and syntax of functions
+- Import data into R
+
+Before using R
+## File organization and management
+
+Create an R project
+- by default, R will open the most recent project. 
+
+1. Create a folder on your computer that you will use for the class 
+2. Open the directory in Rstudio
+
+You will use this folder for storing course materials this sester. 
+
+Basics
+- Folder = directory
+- Do not use spaces in the names. You can use "-" or "_" to separate words or phrases. 
+- Case sensitive! 
+- will need to use file extensions (.csv, .jpeg, etc.)
+
+../ = previous directory
+./ = current directory
+~/ = home directory
+list.files() shows the files in your current place
+
+Set up a folder on your computer
+file and directory syntax (linux)
+Set working directory
+
+## Introduction to R 
+
+Console= where R code runs
+Terminal: Linux code (will not use this)
+Environment
+Viewer
+Files
+
+You can add directories to organize
+read and write csv
+
+datafiles 
+
+
+## Make an R project for the class
+
+
+
+## Activity
+- Read in your data from the last class
+
+
+
+Resource
+https://r4ds.hadley.nz/workflow-basics
+
+
+- 
