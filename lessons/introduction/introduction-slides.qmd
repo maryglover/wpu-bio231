@@ -29,6 +29,12 @@ editor: visual
 
 ------------------------------------------------------------------------
 
+## Attendance
+
+![](slide-images/Lake_Lynn_Raleigh.jpeg){fig-align="center"}
+
+----
+
 ## What do you like about biology?
 
 ------------------------------------------------------------------------
@@ -51,6 +57,17 @@ editor: visual
 
 ## ![understandingscience.org](slide-images/scientific-method.png){fig-align="center"}
 
+------------------------------------------------------------------------
+
+## What is data?
+
+::: incremental
+-   Data is a collection of facts
+-   Data can be *quantitative* or *qualitative*
+:::
+
+------------------------------------------------------------------------
+
 ### Two types of scientific tests
 
 **Experimental studies**: A treatment is imposed on a group and the response is measured. Something is *manipulated*.
@@ -71,16 +88,7 @@ editor: visual
 
 ![](slide-images/chesapeake-bay.png){fig-align="center"}
 
-------------------------------------------------------------------------
-
-## What is data?
-
-::: incremental
--   Data is a collection of facts
--   Data can be *quantitative* or *qualitative*
-:::
-
-------------------------------------------------------------------------
+---
 
 ## Scientific variables
 
@@ -92,7 +100,7 @@ What are the dependent and independent variables in the tea and sea level rise s
 
 ------------------------------------------------------------------------
 
-## Class activity: In groups of 3-4
+## Class activity: In groups of 3
 
 1.  Come up with a research question.
 2.  Form a hypothesis.
@@ -111,6 +119,14 @@ What are the dependent and independent variables in the tea and sea level rise s
 6.  What are you conclusions? Why do you think you got the results you did?
 
 ------------------------------------------------------------------------
+
+## Class activity
+
+1. Go to google sheets and record your data. 
+1. Save your data as a csv file
+1. Share among your group
+
+----
 
 ![R for Data Science](slide-images/tidy-workflow.png){fig-align="center"}
 
@@ -188,19 +204,19 @@ rhago %>%
 
 ## Create figures
 
-![](slide-images/emergence.jpg)
+![](slide-images/emergence.png)
 
 ------------------------------------------------------------------------
 
 ## Create figures
 
-![](slide-images/Figure%206%20Humidity.jpg)
+![](slide-images/humidity.png)
 
 ------------------------------------------------------------------------
 
 ## Make maps
 
-![](slide-images/Map.jpg)
+![](slide-images/map.png)
 
 ------------------------------------------------------------------------
 
@@ -223,4 +239,9 @@ rhago %>%
 -   Join and introduce yourself in the class slack
 -   Download R and Rstudio on your computer
 
-[Homework](https://maryglover.github.io/wpu-bio231/lessons/introduction/introduction-lesson)
+Questions:
+
+1. Tell me about your computer situation
+1. What questions do you have about the class?
+
+[Homework link](https://maryglover.github.io/wpu-bio231/lessons/introduction/introduction-lesson)
