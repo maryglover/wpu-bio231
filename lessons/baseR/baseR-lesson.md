@@ -23,8 +23,8 @@ layout: default
 - Describe components that contribute to freshwater health
 
 ## Class materials
-[Lesson](BaseR.html)
-[Scientific articles slides](https://docs.google.com/presentation/d/1nbL-Di0X1v4TILSPCbvOn8wjPUcGyGFWSBKBMwO-Bf4/edit?usp=sharing)
+- [Lesson](BaseR.html)
+- [Scientific articles slides](https://docs.google.com/presentation/d/1nbL-Di0X1v4TILSPCbvOn8wjPUcGyGFWSBKBMwO-Bf4/edit?usp=sharing)
 
 ## Homework for the next class
 
