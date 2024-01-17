@@ -12,7 +12,7 @@ layout: default
 
 **Instructor**: Dr. Mary Glover                                               
 
-**Class times**: Tuesday/Thursday, 9:55-11:40 AM, Pressly Room 203
+**Class times**: Tuesday/Thursday, 9:55-11:40 AM, Pressly Room 203 and Flowe 312
 
 **Email**: mmglover@peace.edu. Please allow 24 hours for a response. 
 
