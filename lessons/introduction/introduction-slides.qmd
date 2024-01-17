@@ -234,9 +234,22 @@ rhago %>%
 
 ------------------------------------------------------------------------
 
+## Compost
+
+::: {layout-ncol=2}
+![](slide-images/compost.png){width="200%"}
+
+![](slide-images/earth-machine.jpeg)
+
+:::
+
+
+------------------------------------------------------------------------
+
 ## For next week:
 
 -   Join and introduce yourself in the class slack
+- Sign up for compost
 -   Download R and Rstudio on your computer
 
 Questions:
