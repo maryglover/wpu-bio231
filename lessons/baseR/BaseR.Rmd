@@ -1,71 +1,254 @@
 ---
 title: 'Using R'
 output:
-  html_document
+  html_document:
+    toc: true 
+    toc_float: true
+    toc_collapsed: true
+    toc_depth: 3  
 layout: default
 ---
 
-By the end of this lesson, you should be able to:
+**By the end of this lesson, you should be able to:**
 
 - Navigate Rstudio
 - Run code from console notebook
 - Perform mathematical operations in R
 - Assign variables
 - Describe different data types
-- Understand the purpose and syntax of functions
+- Use functions
 - Import data into R
 
-Before using R
-## File organization and management
+This semester, we will be using R to perform data manipulation, analysis, and visualization
 
-Create an R project
-- by default, R will open the most recent project. 
+## What is R?
 
-1. Create a folder on your computer that you will use for the class 
-2. Open the directory in Rstudio
+R is a free, open source computing *software* used for statistical analysis and graphing. R is also a computing *language*. This means that R software interprets the R language, which is a specific set of vocabulary, formatting, and structure, to perform specific tasks. Other coding languages are Java, C++, python, etc.
 
-You will use this folder for storing course materials this sester. 
+## What is Rstudio?
 
-Basics
-- Folder = directory
-- Do not use spaces in the names. You can use "-" or "_" to separate words or phrases. 
-- Case sensitive! 
-- will need to use file extensions (.csv, .jpeg, etc.)
+Rstudio is an interface that runs the R software in a user friendly format. Rstudio allows the user to run R code, take notes, view graphs, and view files in one window.
 
-../ = previous directory
-./ = current directory
-~/ = home directory
-list.files() shows the files in your current place
+We will be using Rstudio in class for computing assignments. When you open Rstudio, you should see three main panes. 
 
-Set up a folder on your computer
-file and directory syntax (linux)
-Set working directory
+- The *console* is where the R code is run
+- The *environment* shows you varables that have been created in R. You can also click to see history or code run in this pane. 
+- The *viewer* has tabs to display plots, files on your computer, and help documentation.
 
-## Introduction to R 
+![Rstudio](images/Rstudio.png)
 
-Console= where R code runs
-Terminal: Linux code (will not use this)
-Environment
-Viewer
-Files
+## File management
 
-You can add directories to organize
-read and write csv
+Before we start coding, it is important to set up a folder where you will be working this semester so that everything is organized and R knows where to find your files. In Rstudio, you can set up an *R project* which is a folder on your computer. When you open the project, Rstudio will automatically go to that folder, making it easier to work with data (importing and exporting) and create coding scripts. 
 
-datafiles 
+You will make an R project for the class work. When you open Rstudio it will automatically open the last project. Or you can open by using File --> Open Project. 
+
+### Tips for naming files and directories
+
+A large part of coding is moving through directories (folders) and accessing files. 
+
+When naming files and directories, it is important that they will be easy to work with.
+
+- R is case sensitive! So be aware of your capitalization
+- Do *not* use spaces in your names. If you would like to separrate words you can use "_" or "-"
+- Pay attention to file extensions (i.e. .jpg, .pdf, .txt). You will need to use full name when working with files. 
+- Folders in names are separated by "/". So for example the directory "Documents/bio_files" is a folder "bio_files" inside the folder "Documents." "Documents/bio_files/photosynthesis.pdf" Is a PDF file inside the bio_files folder. 
+
+Complete the [Make a R project](baseR-exercise) exercise.
+
+## Using R
+
+The next few sections will go through common tasks performed in R, which are needed to complete analyses.
+
+### Mathematical calculations
+
+R can perform basic mathematical calculations. To compute a calculations, simply type it in the *Console*. You can do addition (+), subtraction (-), multiplication (\*), division (/), power (\^), to name a few. You can also use parentheses as usual in mathematical equations.
+
+For example for 5 times 2:
+
+```{r}
+5 * 2
+```
+
+One your own, try some mathematical calculations in the Console.
+
+### Using a R script
+
+While you can run code in the console, it is a much better practice to create an R script. This allows you to save your scripts so that you know what you did in an analysis and makes your science *reproducible*. In the script, you can take notes, write code, and run code all from the same file. You can also save the file and re-run or go back and edit later.
+
+Open up a new script by going to File --> New File --> R script. A script file will open above the console. 
+
+![](images/R-studio-notebook.png)
+
+All of your code should be typed in the script. To run the code from the notebook, but your cursor on the line that you want to run. Then click "Ctrl + enter" on a Windows or Linux machine or 'Cmd + enter' on a Mac.
+
+To add notes, add a '\#' to the beginning of a line. This line will not be run in R. For example:
+
+```{r}
+# I am doing math
+5 * 10
+```
+
+### Functions in R
+
+Most tasks in R will be accomplished using **functions**. Functions is code that is stored in R and will run a specific task.
+
+Functions are run using the function name followed by the "arguments." A function can have any number of arguments.
+
+![Functions](images/function.png){width="50%"}
+
+Functions can range from very simple to very complex. Many functions exist in R without doing anything, you can "load" additional functions through "packages", or you can even make your own functions.
+
+For example, `log` is a function that will take the natural log of the value given as an argument.
+
+```{r}
+log(1.5)
+```
+
+The `log` function can also take an addition argument which sets the base that the logarithms are computed. Two arguments are possible with `log`, x (or the value) and base. So to take the base 10 logarithm of the value 1.5, you could do the following:
+
+```{r}
+log(1.5, 10)
+```
+
+This could be written to include the names of the arguments to avoid confusion.
+
+```{r}
+log(x=1.5, base =10)
+```
+
+There are many other mathematical function such as sum, max, min, mean, median, sd (standard deviation). 
+
+Hint: To get help with a specific function, use '?' followed by the function name
+
+### Assigning variables
+
+In R, you can store information (numbers, tables, text, etc.) in variables. To do this, a variable is assigned a name using the characters `<-`. For example, to assign the letter a the value 1.5, type:
+
+```{r}
+a <- 1.5
+```
+
+Then, when you run `a`, you can see the value.
+
+```{r,}
+a
+```
+
+You can now treat `a` as 1.5. For example, you can take the log of `a`, which is the same as running `log(1.5)`
+
+```{r}
+log(a)
+```
+
+### Data types
+
+So far, we have only dealt with single numbers, but R can handle numbers or text. With numbers, you can type them in regularly and R will recognize them as such. Text is put into quotations ("").
+
+For example, instead of a number, you can store text in a variable:
+
+```{r}
+b <- "hello"
+```
+
+Then when your run the varable `b`, you get the text as the output.
+
+```{r}
+b
+```
+
+There are other types of data, but numbers (numeric) and text (characters) are the two main types we will use in this class.
 
 
-## Make an R project for the class
+
+### Vectors
+
+Data can be stored in different data structures including vectors, data frames, and matrices.
+
+
+**Vectors** are a one dimensional way to put together data of the *same* type (i.e. all text or all characters). The most common way to create a vectors is by using the `c()` function, which concatenates, or combines, values into a vector.
+
+Here, a vector with the numbers 5, 10, 20 are made into a vector named example.vector
+
+```{r}
+example.vector <- c(5, 10, 20)
+example.vector
+```
+
+You can also perform mathematical calculations or functions with vectors. The function is performed on each entry in the vector
+
+```{r}
+example.vector / 5
+```
+
+Vectors can also store character data. 
+```{r}
+rainbow_colors <- c('red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet')
+rainbow_colors
+```
+
+Notice that for characters must use quotation marks. You can use single(') or double (") in R. Without the quotation mark R will try to find a variable of the same name.  
+
+#### Using Functions
+
+You can also run a function with a vector. For example, the function `sum` takes the sum of all numbers. 
+
+```{r}
+sum(example.vector)
+```
+
+You can also use functions on vectors made with characters. 
+For example, here I will use the function `length` to see how long the character vector `rainbow_colors` is. 
+
+```{r}
+length(rainbow_colors)
+```
+
+#### Subsetting vectors
+
+One useful tool is using subsets to determine what is in a specific place in a vector. This is done using brackets "[]". 
+
+In the `rainbow_colors` vector, there are 7 elements. If you want to see what is the third element, you would do the following:
+
+```{r}
+rainbow_colors[3]
+```
+
+If you want to to see what is in the fourth, fifth, and sixth place, you would use the `c()` function again to use more than one number. 
+
+```{r}
+rainbow_colors[c(4, 5, 6)]
+```
+
+Alternatively, in R you can also use `4:6` to go from *4* to *6*. The `:` symbol creates a sequence. 
+
+```{r}
+rainbow_colors[4:6]
+```
+
+### Data frames
+**Data frames** are  data structures with rows and columns, like a table. Each column is essentially a vector, so must have the same data type (i.e. numbers or characters). However, a data frame can consists of columns with different data types. This is widely used for storing data because you can have a column with the treatment name (text) and then a column of the measurement (number).
+
+A data frame might look something like this
+
+```{r, echo=F}
+treatment <- c('control', 'control', 'control', 'high N', 'high N', 'high N', 'low N', 'low N', 'low N' )
+growth <- c(5, 8, 6, 1, 8, 9, 5, 2,3)
+df<- data.frame(treatment, growth)
+df
+```
+
+A **matrix** is similar to a data frame except that *all data* in a matrix are the same type (i.e. all characters or all numbers).
+
+## Working with vectors and data frames
 
 
 
-## Activity
-- Read in your data from the last class
+### Creating a data table
 
+### Subsetting
 
+## Resources
 
-Resource
-https://r4ds.hadley.nz/workflow-basics
-
-
-- 
+- https://r4ds.hadley.nz/workflow-basics
+- [Rstudio projects](https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects)
