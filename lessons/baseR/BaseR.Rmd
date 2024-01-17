@@ -9,6 +9,8 @@ output:
 layout: default
 ---
 
+## Learning objectives
+
 **By the end of this lesson, you should be able to:**
 
 - Navigate Rstudio
@@ -21,11 +23,13 @@ layout: default
 
 This semester, we will be using R to perform data manipulation, analysis, and visualization
 
-## What is R?
+## Introduction
+
+### What is R?
 
 R is a free, open source computing *software* used for statistical analysis and graphing. R is also a computing *language*. This means that R software interprets the R language, which is a specific set of vocabulary, formatting, and structure, to perform specific tasks. Other coding languages are Java, C++, python, etc.
 
-## What is Rstudio?
+### What is Rstudio?
 
 Rstudio is an interface that runs the R software in a user friendly format. Rstudio allows the user to run R code, take notes, view graphs, and view files in one window.
 
@@ -54,7 +58,7 @@ When naming files and directories, it is important that they will be easy to wor
 - Pay attention to file extensions (i.e. .jpg, .pdf, .txt). You will need to use full name when working with files. 
 - Folders in names are separated by "/". So for example the directory "Documents/bio_files" is a folder "bio_files" inside the folder "Documents." "Documents/bio_files/photosynthesis.pdf" Is a PDF file inside the bio_files folder. 
 
-Complete the [Make a R project](baseR-exercise) exercise.
+**Exercise**: Complete the make an R project [exercise](#make-an-r-project)
 
 ## Using R
 
@@ -89,6 +93,8 @@ To add notes, add a '\#' to the beginning of a line. This line will not be run i
 5 * 10
 ```
 
+**Exercise** Try out some code in a script. Complete steps one and two of [exercise 2](#create-a-script).
+
 ### Functions in R
 
 Most tasks in R will be accomplished using **functions**. Functions is code that is stored in R and will run a specific task.
@@ -121,6 +127,8 @@ There are many other mathematical function such as sum, max, min, mean, median, 
 
 Hint: To get help with a specific function, use '?' followed by the function name
 
+**Exercise** Try out a function in your script. Complete step three [exercise 2](#create-a-script).
+
 ### Assigning variables
 
 In R, you can store information (numbers, tables, text, etc.) in variables. To do this, a variable is assigned a name using the characters `<-`. For example, to assign the letter a the value 1.5, type:
@@ -143,7 +151,7 @@ log(a)
 
 ### Data types
 
-So far, we have only dealt with single numbers, but R can handle numbers or text. With numbers, you can type them in regularly and R will recognize them as such. Text is put into quotations ("").
+So far, we have only dealt with single numbers, but R can handle numbers or text. With numbers, you can type them in regularly and R will recognize them as such. Text is put into quotations (""). You can use single(') or double (") in R. Without the quotation mark R will try to find a variable of the same name.  
 
 For example, instead of a number, you can store text in a variable:
 
@@ -157,9 +165,7 @@ Then when your run the varable `b`, you get the text as the output.
 b
 ```
 
-There are other types of data, but numbers (numeric) and text (characters) are the two main types we will use in this class.
-
-
+There are other types of data, but numbers (*numeric*) and text (*characters*) are the two main types we will use in this class.
 
 ### Vectors
 
@@ -182,12 +188,11 @@ example.vector / 5
 ```
 
 Vectors can also store character data. 
+
 ```{r}
 rainbow_colors <- c('red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet')
 rainbow_colors
 ```
-
-Notice that for characters must use quotation marks. You can use single(') or double (") in R. Without the quotation mark R will try to find a variable of the same name.  
 
 #### Using Functions
 
@@ -240,15 +245,144 @@ df
 
 A **matrix** is similar to a data frame except that *all data* in a matrix are the same type (i.e. all characters or all numbers).
 
-## Working with vectors and data frames
+## Working with data frames
 
-
+Data frames most common data structure that you will be working with. Here, we will go over some of the basics of data frames. 
 
 ### Creating a data table
 
+For the most part, you will be importing data into R as a data frame from a csv file. However, you can make your own using R functions. 
+
+*Remember the function 'c()' is used to concatenate or combine numbers or characters into a vector string. *
+
+There are couple ways to create a data frame. 
+
+First, you can use the function `data.frame()`. Using `data.frame` the arguments are what goes into the data frame *columns*. The following makes a data frame with the characters "column1" and "column2" in two different columns. This data frame has 1 row and 2 columns.
+
+```{r}
+data.frame('column1', 'column2')
+```
+
+This next data frame will have one column of characters and one column of numbers. You can also use "=" to name the column. You should also *save* the data frame assigning (`<-`) to a variable. 
+
+```{r}
+class_data <- data.frame(independent = c('low', 'med', 'high'), dependent = c(30, 22, 45))
+class_data
+```
+
+You can also add additional columns or rows using the `cbind()` or `rbind()` functions respectively. Below, I'll add an additional column to the `class_data` data frame. 
+
+```{r}
+dependent2 <- c(5, 10, 15)
+class_data <- cbind(class_data, dependent2)
+class_data
+```
+
+Notice here that the code *rewrote* the class_data object. Be careful doing this!
+
+You can also add row or column names or change the existing ones using `rownames` or `colnames`. Let's say that this data is based on the amount of nitrogen added to plants and I want the row names to include the exact amount (in g). I can also change the column names to be more specific. The key to this function is that you must give the same number of elements as there are rows to `rownames` and columns to `colnames`. You are *assigning* the column or row names with new data. 
+
+```{r}
+rownames(class_data) 
+rownames(class_data) <- c('N5', 'N10', 'N20')
+colnames(class_data) <- c('nitrogen', 'growth', 'height')
+class_data
+```
+
 ### Subsetting
+
+Just like you did with vectors, you can also show specific rows and columns or *subset* data frames. This is again done with brackets. However, in data frames you specify the number row and columns. The first number in brackets is the row, the second is the column. So if you want the third row in the first column you would use [3, 1]. For example:
+
+```{r}
+class_data[3, 1]
+```
+
+Again, you can specify a range using ":"
+
+```{r}
+class_data[1, 2:3]
+```
+
+If you would like all rows or all columns, you leave the place in brackets empty. 
+
+```{r}
+class_data[2, ]
+class_data[ , 1]
+```
+
+In data frames, you can also specify the column using "$" and the name of the column. 
+
+```{r}
+class_data$growth
+```
+
+### Functions on data frames
+
+When specify just a single column in the last section, you essentially created a vector. You can also use functions on this vector. 
+
+For example, you can use `sum` for total growth 
+
+```{r}
+sum(class_data$growth)
+```
+
+Other useful functions are `max` and `min` which show you the maximum and minimum values. 
+
+```{r}
+max(class_data$height)
+```
+
+## Exercise
+
+### Make an R project
+
+We will use an R project for the class work. 
+
+1. To make an R project for the class, go to "File --> New Project" in Rstudio.
+2. Click on "New Directory." This is creating a new folder on your computer for the R project. 
+
+![](images/new-project.png){width="50%"}
+
+3. Next, you will name the project (remember your tips for naming). You can also specify where the project will be on your computer. For example, I have named by project "BIO231" and put it in my Documents folder.
+
+![](images/project-name.png){width="50%"}
+
+### Create a script
+
+1. Open up a new R script and try running some code. 
+2. Save the script. This should go in the folder you just created
+3. run the `list.files()` function. This shows you the files that in the computer folder that you are working in. *You should see the script you made in the previous step.* If not, something has gone wrong with your script. Double check where it is saved and that you have your R project open. 
+
+### Yahtzee exercise
+
+In this exercise you will practice the skills that you just learned: creating variables, working with data frames, mathematical operations, and functions. **Your code should be all run in an R script and submitted to Moodle when your are done.**
+
+1. Play a game of yahtzee!
+2. Create a data frame with the scores for yourself and your teammates. The data structure should have row and column names for player names and the score category. 
+1. Calculate the scores using R for the teammates. There are many ways to do this. Just find one that works for you. You can create new vectors or data frames to do this.
+2. Determine the winner! Use a function here. 
+
+### Stretch assignment
+
+1. Add your csv file of the data you collected in the first class to your R project folder. 
+1. Try running the `read.csv` function to add import the data into R. The function takes the name of the files in quotes as it's argument. 
+
+## List of functions used today
+
+- `log`
+- `c`
+- `sum`
+- `length`
+- `data.frame`
+- `rbind` and `cbind`
+- `rownames` and `colnames`
+- `sum`
+- `max` and `min`
 
 ## Resources
 
-- https://r4ds.hadley.nz/workflow-basics
+- [R for Data Science](https://r4ds.hadley.nz/workflow-basics)
+- [Data Science in R: A Gentle Introduction](https://bookdown.org/jgscott/DSGI/getting-started-in-r.html)
 - [Rstudio projects](https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects)
+
+
