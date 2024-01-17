@@ -33,7 +33,7 @@ editor: visual
 
 ![](slide-images/Lake_Lynn_Raleigh.jpeg){fig-align="center"}
 
-----
+------------------------------------------------------------------------
 
 ## What do you like about biology?
 
@@ -88,18 +88,17 @@ editor: visual
 
 ![](slide-images/chesapeake-bay.png){fig-align="center"}
 
----
+------------------------------------------------------------------------
 
 ## Replication gives more accurate representation of group
 
-![](slide-images/replication1.png){fig-align="center"}
----
+## ![](slide-images/replication1.png){fig-align="center"}
 
 ## Replication gives more accurate representation of group
 
 ![](slide-images/replication2.png){fig-align="center"}
 
----
+------------------------------------------------------------------------
 
 ## Scientific variables
 
@@ -239,35 +238,33 @@ rhago %>%
 
 ## Compost
 
-::: {layout-ncol=2}
+::: {layout-ncol="2"}
 ![](slide-images/compost.png){width="200%"}
 
 ![](slide-images/earth-machine.jpeg)
-
 :::
-
 
 ------------------------------------------------------------------------
 
 ## For next week:
 
 -   Join and introduce yourself in the class slack
-- Sign up for compost
+-   Sign up for compost
 -   Download R and Rstudio on your computer
 
 Questions:
 
-1. Tell me about your computer situation
-1. What questions do you have about the class?
+1.  Tell me about your computer situation
+2.  What questions do you have about the class?
 
 [Homework link](https://maryglover.github.io/wpu-bio231/lessons/introduction/introduction-lesson)
 
----
+------------------------------------------------------------------------
 
 ## Class activity
 
-1. Go to google sheets and record your data. 
-1. Save your data as a csv file
-1. Share among your group
+1.  Go to google sheets and record your data.
+2.  Save your data as a csv file
+3.  Share among your group
 
-----
+------------------------------------------------------------------------
