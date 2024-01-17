@@ -24,9 +24,9 @@ layout: default
 
 ## Class materials
 [Lesson](BaseR.html)
-[Slides]()
+[Scientific articles slides](https://docs.google.com/presentation/d/1nbL-Di0X1v4TILSPCbvOn8wjPUcGyGFWSBKBMwO-Bf4/edit?usp=sharing)
 
-## Homework
+## Homework for the next class
 
 1. Complete Base R activity and submit in Moodle
 1. Complete the scientific introduction assignment in Moodle

@@ -1,6 +1,6 @@
 ﻿Week,Date,Topic,Assignments
 1,Thur. Jan. 17,[Experimental design and introduction](lessons/introduction/introduction-lesson),Introduction in Slack (completed in class)
-2,Tues. Jan. 23,Basic R <br> *Last day to add/drop course*,[Download R and R studio](lessons/introduction/download-R.html)
+2,Tues. Jan. 23,[Basic R](lesson/baseR-lesson) <br> *Last day to add/drop course*,[Download R and R studio](lessons/introduction/download-R.html)
 ,Thur. Jan. 25,Data manipulation and tidy data with dplyr,Base R activity <br> Scientific article introduction
 3,Tues. Jan. 30,Graphing data with ggplot,Data manipulation activity <br> Graphing lies reading
 ,Thur. Feb. 1,Statistics,Graphing activity <br> Scientific article results
