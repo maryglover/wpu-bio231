@@ -34,8 +34,9 @@ wqp |>
 # NC Ambient Monitoring System - MODERN has 5 locations with 20 different chemical tests. 
 
 clean_cols <- wqp |>
-  separate(ActivityStartDate, into = c('Year', 'Month', 'Day'), sep = '-') |> 
-  select(Year, Media = ActivityMediaName, Project = ProjectName, Location = MonitoringLocationName, Latitude = ActivityLocation.LatitudeMeasure, Longitude = ActivityLocation.LongitudeMeasure, Detection = ResultDetectionConditionText, Characteristic = CharacteristicName, Result = ResultMeasureValue, Result_Unit = ResultMeasure.MeasureUnitCode, Comment = ResultCommentText, Taxonomy = SubjectTaxonomicName, Detection_Measure = DetectionQuantitationLimitMeasure.MeasureValue, Detection_Unit = DetectionQuantitationLimitMeasure.MeasureUnitCode) 
+  separate(ActivityStartDate, into = c('Year', 'Month', 'Day'), sep = '-', remove = FALSE) |> 
+  select(Year, Month, Day, Date = ActivityStartDate,  Media = ActivityMediaName, Project = ProjectName, Location = MonitoringLocationName, Latitude = ActivityLocation.LatitudeMeasure, Longitude = ActivityLocation.LongitudeMeasure, Detection = ResultDetectionConditionText, Characteristic = CharacteristicName, Result = ResultMeasureValue, Result_Unit = ResultMeasure.MeasureUnitCode, Comment = ResultCommentText, Taxonomy = SubjectTaxonomicName, Detection_Measure = DetectionQuantitationLimitMeasure.MeasureValue, Detection_Unit = DetectionQuantitationLimitMeasure.MeasureUnitCode) 
+
 wake_bio <- clean_cols |>
   filter(Media == 'Biological') |>
   select(-Detection_Measure, - Detection_Unit, -Detection)
@@ -54,3 +55,14 @@ water_chem |>
 
 write.csv(water_chem, 'data/water_chem_raleigh_wqp.csv', row.names = F)
 write.csv(wake_bio, 'data/bio_assess_raleigh_wqp.csv', row.names = F)
+
+
+water_chem |>
+  filter(Location== "PIGEON HOUSE BRANCH AT DORTCH ST AT RALEIGH") |>
+  filter(Characteristic %in% c('Temperature, water', 'Fecal Coliform')) |> 
+  select(-Media, -Project, - Comment, - Taxonomy, - Result_Unit)|>
+  pivot_wider(names_from = Characteristic, values_from = Result) |>
+  rename(Fecal_Coliform = `Fecal Coliform`, Temperature = `Temperature, water`) |>
+  ggplot(aes(x=Temperature, y = Fecal_Coliform)) +
+  geom_point() +
+  geom_smooth(method= 'lm')

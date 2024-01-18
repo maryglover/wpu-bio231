@@ -21,4 +21,4 @@ layout: default
 
 - Introduce yourself in the class slack [link to join](https://join.slack.com/t/env231-sp24/shared_invite/zt-29yx0au0z-aC7TxX0x5s2tAGS0uwfa4g)
 - [Sign up to empty the compost bin](https://docs.google.com/spreadsheets/d/1cySwaGXz33zHNNWfCN_nsgK2P9n7WBICAfZ08-5X9FI/edit?usp=sharing)
-- Download R and Rstudio on your computer. You need to download *both*. Rstudio can only be used if you download R as well. Use these [instructions](./download-R.html)
+- Download R and Rstudio on your computer. You need to download *both*. Rstudio can only be used if you download R as well. Use these [instructions](./download-R.html) OR [Rstudio cloud](https://posit.cloud)
