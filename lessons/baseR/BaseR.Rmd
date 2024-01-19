@@ -346,6 +346,7 @@ max(class_data$height)
 
 We will use an R project for the class work. 
 
+#### On your desktop
 1. To make an R project for the class, go to "File --> New Project" in Rstudio.
 2. Click on "New Directory." This is creating a new folder on your computer for the R project. 
 
@@ -355,16 +356,37 @@ We will use an R project for the class work.
 
 ![](images/project-name.png){width="50%"}
 
+#### In Rstudio cloud
+
+When working in Rstudio cloud, you have to set up a project to begin working. 
+
+1. In Rstudio cloud, to start an R project, click New Project then Rstudio project. 
+
+![](images/cloud-project.png)
+
+2. Click at the top to name the project. I used the name BIO231 in the example. You can use whatever you like. 
+
+![](images/cloud-name.png)
+
+3. In Rstudio cloud, you will have to upload any data file that you want to work with instead of accessing it from your computer directly. You can do this in the lower right hand box with the *upload* button
+
+![](images/cloud-files.png)
+[Back to lesson](#using-r)
+
 ### Create a script
 
 1. Open up a new R script and try running some code. 
 2. Save the script. This should go in the folder you just created
 3. run the `list.files()` function. This shows you the files that in the computer folder that you are working in. *You should see the script you made in the previous step.* If not, something has gone wrong with your script. Double check where it is saved and that you have your R project open. 
 
+[Back to lesson](#assigning-variables)
+
 ### Importing data
 
 1. Add your csv file of the data you collected in the first class to your R project folder. 
 1. Use `read.csv` to import the data. Don't forget to assign it a name!
+
+[Back to lesson](#subsetting)
 
 ### Yahtzee exercise
 
