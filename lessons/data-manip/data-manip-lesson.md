@@ -1,5 +1,5 @@
 ---
-title: 'Lesson Title'
+title: 'Data manipulation'
 output:
   html_document
 layout: default
