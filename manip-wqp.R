@@ -62,7 +62,24 @@ water_chem |>
   filter(Characteristic %in% c('Temperature, water', 'Fecal Coliform')) |> 
   select(-Media, -Project, - Comment, - Taxonomy, - Result_Unit)|>
   pivot_wider(names_from = Characteristic, values_from = Result) |>
-  rename(Fecal_Coliform = `Fecal Coliform`, Temperature = `Temperature, water`) |>
-  ggplot(aes(x=Temperature, y = Fecal_Coliform)) +
-  geom_point() +
-  geom_smooth(method= 'lm')
+  rename(Fecal_Coliform = `Fecal Coliform`, Temperature = `Temperature, water`) 
+
+water_chem |>
+  select(Date, Project, Location, Latitude, Longitude, Characteristic, Result) %>%
+  group_by(Project)%>%
+  distinct(Characteristic)%>%
+  summarize(n = n())
+
+ambient_monitoring <-water_chem |>
+  filter(Project == "NC Ambient Monitoring System - MODERN") %>%
+  select(Date, Project, Location, Latitude, Longitude, Characteristic, Result) %>%
+  pivot_wider(names_from = Characteristic, values_from = Result)
+
+write.csv(ambient_monitoring, 'data/NC_ambient_monitoring.csv', row.names = F)
+
+ambient_monitoring %>%
+  separate(Date, into = c('Year', 'Month', 'Day'), sep = '-') %>%
+  group_by(Year, Location) %>%
+  summarize(meanTurb = mean(Turbidity, na.rm = T), meanTemp = mean(`Temperature, water`, na.rm=T), pH = mean(pH, na.rm= T), P = mean(Phosphorus, na.rm=T), )
+
+
