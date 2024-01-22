@@ -5,6 +5,8 @@ output:
     theme: cayman
 ---
 
+<span style="color:green">*Updated: 1/22/2024*</span>.
+
 Schedule subject to change. All changes will be announced to students. 
 
 *Unless noted otherwise, all assignments are due at the* ***beginning*** *of class*
