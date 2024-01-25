@@ -112,11 +112,12 @@ climate |>
 ```
 
 *Important syntax*
+
 - == : equals
-- > : greater than
+- \> : greater than
 - < : less than
 - != : not equal to 
-- >= : greater than or equal to 
+- \>= : greater than or equal to 
 - <= : less than or equal to 
 - | : or
 - %in% : matches contents of a vector
@@ -331,11 +332,11 @@ In the climate data the mean temperature (tmean) is calculated by the Prism data
 Create R code to calculate which year had the highest *total* precipitation in Raleigh.
 
 ### Water quality data analysis
-In this exercise, you will explore water quality data from Raleigh zip code 27603, collected through the [NC Ambient Monitoring System](https://www.deq.nc.gov/about/divisions/water-resources/water-sciences/ecosystems-branch/ambient-monitoring-system-ams) through the NC Department of Environmental Quality. Water quality data is publicly available through the EPA [Water Quality Portal](https://www.waterqualitydata.us/). The data is collected from 2015 - 2020 and includes 18 different water quality variables, including water temperature, fecal coliform (bacteria), and dissolved oxygen for 5 different stream sites. 
+In this exercise, you will explore historic water quality data from the City of Raleigh. The data is collected from 2008 - 20223 and includes 19 different water quality variables, including water temperature, *E. coli* bacteria, and dissolved oxygen for 18 different stream sites. 
 
 In this exercise, you will need to:
 
-1. Import the data into your workspace. The data is stored in the class data google drive folder as "NC_ambient_monitoring.csv"
+1. Import the data into your workspace. The data is stored in the class data google drive folder as "raleigh_wq_clean.csv"
 1. Explore the data a bit using functions you learned today to see what is found in the data frame. 
 1. Pick a couple of variables or columns to explore. Describe the factors that you chose and how they impact water quality. Do a little research here. 
 1. Ask questions and create summarizes using functions `group_by`, `summarize`, etc. 

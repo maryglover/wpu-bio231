@@ -1809,10 +1809,17 @@ sorting by a character, you would need quotations marks (ex. city ==
 ## 10 2023     4 16.8021 10.3899 23.2143 192.0933
 ## 11 2023     5 18.7094 13.4401 23.9789  79.6373
 ## 12 2023     6 23.0194 17.5976 28.4413  95.8790</code></pre>
-<p><em>Important syntax</em> - == : equals - &gt; : greater than - &lt;
-: less than - != : not equal to - &gt;= : greater than or equal to -
-&lt;= : less than or equal to - | : or - %in% : matches contents of a
-vector</p>
+<p><em>Important syntax</em></p>
+<ul>
+<li>== : equals</li>
+<li>&gt; : greater than</li>
+<li>&lt; : less than</li>
+<li>!= : not equal to</li>
+<li>&gt;= : greater than or equal to</li>
+<li>&lt;= : less than or equal to</li>
+<li><div class="line-block">: or</div></li>
+<li>%in% : matches contents of a vector</li>
+</ul>
 <p>You can also filter by multiple criteria. Let’s say you want only
 January of months before 2020.</p>
 <pre class="r"><code>climate |&gt;
@@ -2282,17 +2289,15 @@ precipitation in Raleigh.</p>
 </div>
 <div id="water-quality-data-analysis" class="section level3">
 <h3>Water quality data analysis</h3>
-<p>In this exercise, you will explore water quality data from Raleigh
-zip code 27603, collected through the <a href="https://www.deq.nc.gov/about/divisions/water-resources/water-sciences/ecosystems-branch/ambient-monitoring-system-ams">NC
-Ambient Monitoring System</a> through the NC Department of Environmental
-Quality. Water quality data is publicly available through the EPA <a href="https://www.waterqualitydata.us/">Water Quality Portal</a>. The
-data is collected from 2015 - 2020 and includes 18 different water
-quality variables, including water temperature, fecal coliform
-(bacteria), and dissolved oxygen for 5 different stream sites.</p>
+<p>In this exercise, you will explore historic water quality data from
+the City of Raleigh. The data is collected from 2008 - 20223 and
+includes 19 different water quality variables, including water
+temperature, <em>E. coli</em> bacteria, and dissolved oxygen for 18
+different stream sites.</p>
 <p>In this exercise, you will need to:</p>
 <ol style="list-style-type: decimal">
 <li>Import the data into your workspace. The data is stored in the class
-data google drive folder as “NC_ambient_monitoring.csv”</li>
+data google drive folder as “raleigh_wq_clean.csv”</li>
 <li>Explore the data a bit using functions you learned today to see what
 is found in the data frame.</li>
 <li>Pick a couple of variables or columns to explore. Describe the
