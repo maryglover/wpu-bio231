@@ -37,9 +37,22 @@ clean.wq <- wq.det |>
 
 write.csv(clean.wq, "data/raleigh_wq_clean.csv", row.names = F)
 
+## playing with data
 clean.wq %>%
-  group_by(Site)|>
   filter(!grepl("DUP",Site)) |> # gets rid of duplicate sites
   filter(!grepl("Dup",Site)) |>
- distinct(Site) 
+  separate(Date, into = c('Year', 'Month', 'Day'), sep = '-')|>
+  group_by(Site, Year)|>
+  summarize(E_coli = mean(E_coli, na.rm = T), 
+            Temperature = mean(Temperature, na.rm = T))
+
+library(ggplot2)
+
+clean.wq %>%
+  filter(!grepl("DUP",Site)) |> # gets rid of duplicate sites
+  filter(!grepl("Dup",Site)) |>
+  separate(Date, into = c('Year', 'Month', 'Day'), sep = '-')|>
+  ggplot(aes(x = Temperature, y = E_coli)) +
+  geom_point() +
+  geom_smooth(method = 'lm')
 
