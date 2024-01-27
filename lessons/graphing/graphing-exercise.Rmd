@@ -1,0 +1,294 @@
+---
+title: "Data visualization"
+output:
+  html_document:
+    toc: true 
+    toc_float: true
+    toc_collapsed: true
+    toc_depth: 3  
+layout: default
+---
+
+```{r klippy, echo=FALSE, include=TRUE}
+klippy::klippy()
+```
+
+## Introduction to ggplot
+
+In this lesson, you will learn how to plot graphs or figures in R. When working with data, it is good practice to plot the data to evaluate it. This can help identify trends or even problems in the data. Also need plotting for displaying and communicating results. There are basic plotting functions in R, but we will use the functions in the package `ggplot2`. 
+
+We will use the package `ggplot2` to produce visualizations in this class:
+
+- ggplot works well with the "tidy" data and data manipulations that you did in the previous lesson with `dplyr`
+- ggplot is very customizable, allowing you to alter titles, colors, style, etc. with R code. 
+- ggplot produces pretty graphs. 
+
+### Install `ggplot2` 
+
+To use `ggplot2`, you must first install it. You can use the packages tab on the lower right hand pane of Rstudio or with the code:
+
+```
+install.packages('ggplot2')
+```
+
+You only have to install the `ggplot2` package once, but don't forget to load it in each time you want to use it. 
+
+```{r}
+library(ggplot2)
+```
+
+In this lesson, we will continue working with the climate data from the [data manipulation exercise](../data-manip/data-manip-exercise.html)
+
+Go ahead and load in the data
+
+```{r}
+climate <- read.csv('data/raleigh_prism_climate.csv')
+```
+
+## Layers
+
+`ggplot2` uses what are called "layers" to plot data. These layers are added on one another to produce the visualization. 
+
+The first layer sets the *foundation* and uses the function `ggplot()`. The `ggplot()` function expects:
+
+1. the data you are plotting
+2. the aesthetic mapping `aes()`. This provides the columns that will be displayed on the graph. For example, the what column is the x axis and which is the y axis.
+
+Let's say that we wanted to plot a histogram of the precipitation in Raleigh from 1981 to 2023. A histogram shows the distribution of values, with the value on the x axis (in this case precipitation), and the number of times is found in the data on the y axis. To do this, we will set the aesthetic for the x axis as the `precip` column. 
+
+```{r new plot}
+ggplot(data = climate, aes(x = precip))
+```
+
+You will notice that this plots an empty graph. This code sets up the foundation of the plot, including the "coordinate system" or scale of the axes. To add the data, you must *add* an additional layer. To plot the precipitation as a histogram, we will add the `geom_histogram()` function to the foundation. Because you have already stated the data and the axes, you do not need to provide additional arguments. 
+
+```{r precip-hist}
+ggplot(data = climate, aes(x = precip)) +
+  geom_histogram()
+```
+***What do you notice about the precipitation data?***
+
+To create different types of plots, you would use a different layer. Some examples are:
+
+- `geom_point`: plots points for a scatterplot
+- `geom_bar`: barplot
+- `geom_boxplot`: boxplot
+- `geom_line`: line graph. 
+
+For most graphs, you would need to specify both the x and y axis in the aesthetics `aes()`. For example, lets say that you wanted to see the temperature of different months, with month on the x axis and temperature on the y axis. You could do this with points for every data point with `geom_point` .
+
+You could also graph this data with a boxplot. A boxplot is a way to show the distribution of data, by displaying the summary statistics, including the median, the 25% and 75% quantiles, and outliers. Here, you need to specify the "group" in the boxplot aesthetic to show that each month should be a separate box. 
+
+```{r}
+ggplot(data = climate, aes(x = month, y = tmean))+
+  geom_boxplot(aes(group = month))
+```
+
+You could also create a line graph adding the `geom_line()` layer. We will add this after the `geom_point()` layer to have points and lines. With `geom_line`, you have to specify what the lines are connecting. In this case, we can have a line for each year. This goes in the `aes()` mapping for `geom_line()`
+
+```{r}
+ggplot(data = climate, aes(x = month, y = tmean)) +
+  geom_point()+
+  geom_line(aes(group = year))
+```
+
+This is a bit hard to read. One thing you can do in `ggplot` is summarize the data and then plot. We can do this using our `dplyr` manipulation. Here, we will determine the summarize the data to get the average and standard deviation for each month
+
+```{r, warning=FALSE, message=FALSE}
+library(dplyr)
+```
+
+```{r}
+climate |>
+  group_by(month)|>
+  summarize(mean_temp = mean(tmean), sd_temp = sd(tmean))
+```
+
+To plot this summary, you can either "add" the ggplot layers to the summary, or save the new data table and then create a plot. Here, we will save the summary table. 
+
+```{r}
+month_temp <- climate |>
+  group_by(month)|>
+  summarize(mean_temp = mean(tmean), sd_temp = sd(tmean))
+```
+
+Now, we will use the `geom_point` and `geom_line` layers to display the data. `geom_line` will only connect things if they are numbers. We can turn the months back in to numeric data by using the `as.numeric()` function. 
+
+```{r}
+ggplot(month_temp, aes(x=month, y=mean_temp)) +
+  geom_point()+
+  geom_line()
+```
+
+**Exercise:** What do you want to plot?
+ 
+## Customizing plots
+
+So far, the plots have just been using the default display settings. In ggplot, you can customize the appearance of the plots using addition code or layers. 
+
+### Labels
+
+First, we will use additional layers to add labels, including axis labels and titles. To change the axis labels, we can use the `labs()` layer. In `labs` you can specifiy changing the x-axis (x), y axis (y), and the title.
+
+For example, we can use the last plot and rename the x and y axes. 
+
+```{r}
+ggplot(month_temp, aes(x=month, y=mean_temp)) +
+  geom_point()+
+  geom_line()+
+  labs(x = "Month", y = "Mean Temperature (degrees C)") 
+```
+
+You can also add a title with "title = ". 
+
+```{r}
+ggplot(month_temp, aes(x=month, y=mean_temp)) +
+  geom_point()+
+  geom_line()+
+  labs(x = "Month", y = "Mean Temperature (degrees C)", title = ("Average Temperature in Raleigh"))
+```
+
+You can also change the numbers on the axes using the `scale_x_continuous()` layer. Before we do this, we will assign the plot to a new variable. This will save typing by having the previous code saved. Then we can continue adding layers. 
+
+```{r}
+tmean_month_plot <- ggplot(month_temp, aes(x=month, y=mean_temp)) +
+  geom_point()+
+  geom_line()+
+  labs(x = "Month", y = "Mean Temperature (degrees C)", title = ("Average Temperature in Raleigh"))
+```
+
+Now, we will alter the scale. In the `scale_x_continuous` layer, we can specify the `breaks` or where we want ticks, and the `labels`. 
+
+```{r}
+tmean_month_plot +
+  scale_x_continuous(breaks = 1:12, labels = c('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'))
+```
+
+### Theme
+
+The default in ggplot is to use have the background as gray with white gridlines. There are layers to edit the background and gridlines. But the easiest way to change the overall look of the plot is to change the "theme" of the plot. There are several different themes that can be "added" to a plot. We will use one called `theme_minimal`.  To see a full list, see the help file for the themes type `?theme_minimal`
+
+```{r}
+tmean_month_plot +
+  scale_x_continuous(breaks = 1:12, labels = c('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec')) +
+  theme_minimal()
+```
+
+**Exercise**: Play around with the different themes to find one you like. 
+
+### Color
+
+You can also change the color in ggplot using the 'color' or 'fill' argument. Color is used to change the color of the outline, and fill is used to color the inside of a shape. For geom_point() and geom_line(), you would change the color. 
+
+```{r}
+ggplot(month_temp, aes(x=month, y=mean_temp)) +
+  geom_point(color = 'blue')+
+  geom_line(color = 'blue')
+```
+
+Let's say we wanted to plot as a bar graph, you could change the outline and fill of the bars. For bar graphs, you must specify what you want to plot. Here, we set the `stat = "identity"` to plot the value of the in the cell. This works here because there is only one value for each month on the x axis.
+
+```{r}
+ggplot(month_temp, aes(x=month, y=mean_temp)) +
+  geom_bar(stat = 'identity', color = 'darkblue', fill = 'lightblue')
+```
+
+To see a full list of colors you can use, see [R color chart](RColorChart.pdf). 
+
+### Other customizations
+
+In the layers, you can also change other aspects including
+
+- size: `size = `
+- shape of points: `shape = ` 
+- line type (ex. dashed, solid): `linetype = `
+
+For a list of the aesthetics, see <https://ggplot2.tidyverse.org/articles/ggplot2-specs.html>
+
+### Color Aesthetics
+So far we have changed the color of all the data. However, a very useful way to use color is to base the color on a different variable, or column in the data. Let's say we want to look at the temperature differences in different years. We could make each year a different color. First, we can create a subset of the data with the years 1983, 1993, 2003, 2013, and 2023. 
+
+```{r}
+climate_decade <- climate |>
+  filter(year %in% c(1983, 1993, 2003, 2013, 2023))
+```
+
+To color based on a variable, we need to add color in the aesthetic mapping, to say that color should be based on the year column. Here, we will change the year to a factor for the year to make each color distinct. We also must specify what the lines are connected with the `group = ` aesthetic in `geom_line`. 
+
+```{r}
+ggplot(data = climate_decade, aes(x= month, y = tmean, color = as.factor(year))) +
+  geom_point() +
+  geom_line(aes(group = year))
+```
+
+You can also add additional arguments in `aes()` to change other aesthetics based on a column in your dataset. 
+
+```{r}
+ggplot(data = climate_decade, aes(x= month, y = tmean, color = as.factor(year), linetype = as.factor(year), shape = as.factor(year))) +
+  geom_point() +
+  geom_line(aes(group = year))
+```
+
+### Facets
+
+The last customization we will discuss are facets. Facets allow you to compare variables by plotting different plots side by side. The `facet_wrap` layer subsets the data based on a variable. Here will subset based on year. 
+
+```{r}
+ggplot(data = climate_decade, aes(x= month, y = tmean)) +
+  geom_point() +
+  geom_line() +
+  facet_wrap(~year)
+```
+
+## Saving plots
+
+In this lesson, all of the plots are shown in R but not saved anywhere. Plotting data is a great way to understand the data and explore patterns. When you are ready to communicate your results with a figure, you can save the plot with the `ggsave` function. 
+
+Here, we can save the boxplot for temperature by month and save to our computer. First, we will assign the plot a name and then save with `ggsave`
+
+```{r, final-boxpot}
+temp_boxplot <- ggplot(data = climate, aes(x = month, y = tmean)) +
+  geom_boxplot(size =1.5,fill = "lightgray",  aes(group = month)) +
+  scale_x_continuous(breaks = 1:12, labels = c('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec')) +
+  labs(title = 'Average Temperature in Raleigh 1981 - 2023', x = 'Month', y = "Mean Temperature (C)" ) +
+  theme_bw()
+
+```
+
+`ggsave` needs arguments for the file name your the file you are saving and the plot to save. For the file name, you must give an extension. This will determine what type of file it is saved as. For example, you can save as png, pdf, jpeg, etc. 
+
+```{r, eval=FALSE}
+ggsave(filename = "raleigh_mean_temp.png", temp_boxplot)
+```
+
+## Exercises
+
+### Basic plotting
+Create a plot for the maximum temperature by year only for the month of July. Do you see a pattern? 
+
+*Hint* You will have to filter the data first and decide what type of graph to use. 
+
+### Plotting with facets
+Using `facet_wrap` plot the maximum temperature by year, plotting each month. 
+
+### Water quality data
+Look back at your exercise for data manipulation with the City of Raleigh. Create plots to explore the relationships you looked at with `dplyr`.
+
+You will need to decide what types of graphs to use and what should go on each axis. 
+
+## New functions
+
+- `ggplot()`
+- `geom_*()`
+- `labs()`
+- `facet_wrap()`
+- `scale_x_continuous()`
+- `theme_*()`
+- `ggsave()`
+
+## Resources
+
+- [R for Data Science intro](https://r4ds.hadley.nz/data-visualize)
+- [R for Data Science advanced](https://r4ds.hadley.nz/layers)
+- [R graph gallery](https://r-graph-gallery.com/boxplot.html) This has many examples with code.
+[Graphing with ggplot2 lesson](https://sesync-ci.github.io/graphics-with-ggplot2-lesson)
