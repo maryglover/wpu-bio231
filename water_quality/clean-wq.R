@@ -46,6 +46,8 @@ clean.wq %>%
   summarize(E_coli = mean(E_coli, na.rm = T), 
             Temperature = mean(Temperature, na.rm = T))
 
+
+#example plot
 library(ggplot2)
 
 clean.wq %>%
@@ -53,6 +55,5 @@ clean.wq %>%
   filter(!grepl("Dup",Site)) |>
   separate(Date, into = c('Year', 'Month', 'Day'), sep = '-')|>
   ggplot(aes(x = Temperature, y = E_coli)) +
-  geom_point() +
-  geom_smooth(method = 'lm')
+  geom_point() 
 
