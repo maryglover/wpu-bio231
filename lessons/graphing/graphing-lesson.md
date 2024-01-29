@@ -17,10 +17,11 @@ layout: default
 ## Class materials
 
 - [Lesson](graphing-exercise)
+- [Graphing slides](https://docs.google.com/presentation/d/1zwOLxR2dEUojzStu23wr9k3j3x3-Je6rwCd9H75FAKU/edit?usp=sharing)
 - Data: We will be using the same data files from the data manipulation [lesson](../data-manip/data-manip-exercise). You should already have these downloaded and in your workspace. 
 
 ## Homework
 Submit the following in Moodle:
 
-1. Complete exercise for graphing and submit R script
+1. Complete exercises for graphing
 1. Reading scientific article results
