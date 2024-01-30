@@ -16,7 +16,7 @@ layout: default
 
 ## Class materials
 
-- [Lesson]()
+- [Lesson](statistics-exercise.html)
 - [Slides]()
 
 ## Homework

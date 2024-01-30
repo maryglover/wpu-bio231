@@ -1,0 +1,153 @@
+---
+title: "Basic Statistics in R"
+output:
+  html_document:
+    toc: true 
+    toc_float: true
+    toc_collapsed: true
+    toc_depth: 3  
+layout: default
+---
+
+## Introduction to statistics in R
+
+A main use of R is conducting statistical analyses with data. R has many functions and packages for running different statistical analyzes. Just like with the work you have done in R, different functions perform different tasks and you specify how the function will work with arguments. You have control over the statistical tests you are performing, but you also have to know what you want to do. 
+
+In this lesson, we will assume a basic understanding of hypothesis testing. See the lesson slides for a review. 
+
+## Linear regressions in R
+
+While there are multiple simple statistical tests to use with experimental data to compare groups, we will only cover one, *the linear model*. We will use the function `lm()`. In R, this conveniently can work with both numerical and categorical independent variables. 
+
+We will continue using the Raleigh temperature data set.
+
+```{r}
+climate <- read.csv('data/raleigh_prism_climate.csv')
+```
+
+First, let's say we are interested in learning about the pattern of precipitation in Raleigh. Specifically, we want to see if the mean temperature affects the precipitation. 
+
+Before, we look at this statistically, it is good to graph this to see what we are working with. 
+
+```{r}
+library(ggplot2)
+
+ggplot(data = climate, aes(x = tmean, y = precip)) + 
+  geom_point()
+```
+
+The graph shows us the relationship we are testing. We will use the function `lm()` to make a linear model. The linear model will "model" the "best fit line" of the relationship. Remember, a line equation is
+ \(y = mx + b\), where:
+ - y is the dependent variable
+ - x is the independent variable
+ - m is the slope of the line
+ - b is the intercept of the line. 
+ 
+If the slope is 0 there is not relationship between the two variables, so in our linear regression we are testing the null hypothesis that there is no relationship and the slope is equal to 0. 
+ 
+The function `lm` expects the data (`data = `) and a formula which specifies the model. The formula is in the format `response ~ predictor(s)`, where the response and predictor are columns in the dataset. The response is the dependent variable and is always a numerical value. The predictor is the dependent variable and can be either numeric or categorical. You can include multiple predictors by adding them, i.e.  `response ~ predictor1 + predictor2`
+
+To calculate, you should assign the model to a named R object. 
+
+```{r}
+precip_lm <- lm(data = climate, precip ~ tmean)
+```
+
+To view the model, use the  `summary()` function. 
+
+```{r}
+summary(precip_lm)
+```
+
+Here, you will find the results of the model. The model has 2 coefficients, the intercept and the tmean, or the "slope." Both of these are testing is the coefficient equal to 0. We are not concerned with whether the intercept of the best fit line is equal to 0, but if the slope of the line is different from 0. In this model, the best fit line has a slope of 1.23. The p-value is 6.2e-05. 
+
+Using the criteria of p < 0.05, we can "fail to accept" the null hypothesis that there is no relationship between mean temperature and precipitation. You can see the F statistic, degrees of freedom (DF) and p-value at the bottom. Here, the p-value of the full model and the tmean are the same, as we only looked at one predictor. 
+
+So, here we do see a "significant" relationship between temperature and precipitation. We also see that the relationship is not very strong. A slope of 1.23 is not very steep. You can also look at the R-squared value, which is the "the proportion of the variation in the dependent variable that is predictable from the independent variable" or the strenght of the relationship. Here the R-squared (adjusted) is 0.02887, which is very low. 
+
+### Graphing linear model
+You can also show the linear model, with the best fit line, on the plot in `ggplot`. From a linear model,  you can extract the coefficients of slope and intercept using the `coeff[1]` and `coeff[2]`. 
+
+```{r}
+precip_lm$coeff[1]
+precip_lm$coeff[2]
+```
+
+You can also add a line layer using `geom_abline`, which expects a value for the intercept and slope. 
+
+```{r}
+ggplot(data = climate, aes(x = tmean, y = precip)) + 
+  geom_point()+
+  geom_abline(intercept = precip_lm$coeff[1], slope = precip_lm$coeff[2], color = 'red')
+```
+
+As a shortcut for graphing, you could also use the layer `geom_smooth` and specify the `method = lm` which will run the linear model and plot. 
+
+```{r}
+ggplot(data = climate, aes(x = tmean, y = precip)) + 
+  geom_point()+
+  geom_smooth(method='lm')
+```
+
+As a good practice, you should not display the best fit line if the model is not significant. Showing the line implies a relationship, which can be misleading there is no evidence for one. 
+
+## Linear models with categorical variables
+In the previous example, both the response and the predictor were numeric. But what if you have a categorical predictor variable. In this case, you can still run the function `lm()` but the underlying statistical test will be different. In this case, you are testing the null hypothesis that the *means* of the group are equal. 
+
+Let's say we want to see how the average differs based on season. 
+
+First, we will add a column for season in the climate data frame. I will use the function `case_when()` to modify with mutate.
+
+```{r}
+library(dplyr)
+climate_season <- climate |>
+  mutate(season = case_when((month %in% c(12, 1, 2)) ~ 'winter', 
+                           (month %in% c(3, 4, 5)) ~ 'spring',
+                           (month %in% c(6, 7, 8) ~ 'summer'), 
+                           (month %in% c(9, 10, 11) ~ 'fall')))
+```
+
+Now, we can plot the seasons based on average temperature to see the relationships. 
+
+```{r}
+ggplot(data = climate_season, aes(x = season, y = tmean)) +
+  geom_boxplot()
+```
+
+To peform the statistical test, the function works the same as the regression from the example before (response ~ predictor.)
+
+```{r}
+season_lm <- lm(data = climate_season, tmean ~ season)
+summary(season_lm)
+```
+
+But, you can see here that the output is a bit different. In the coeffecients, you have the intercept coefficient and coefficeints for different seasons. But only three of the seasons are listed -- fall is missing. This is because the intercept estimate is actually the *mean* for fall. The rest of the estimates are means for the seasons *based* on fall. Fall is the reference group for the other levels. For example, the mean temperature of spring is 0.9190 *less* than mean of fall. With categorical data, R is looking at the "treatment contrasts" or the differences in the groups instead of a best fit line. 
+
+To interpret the output, you could still look at the p-value in the last line. This is the p-value for the full mode. Here, you see that it is less that 0.05, indicating that you can reject the null hypothesis that the means of the seasons are equal. To determine which is "significant" other tests would be needed, but can say that season has an effect on the temperature. 
+
+## Exercises 
+
+### 1: Temperature and Dissolved Oxygen
+Look back at the City of Raleigh water quality data. Explore the relationship between water temperature and the dissolved oxygen (in percent saturation). 
+
+1. What is the null hypothesis?
+1. Create a `lm` model in R. 
+1. Interpret the results. Is there a relationship between the two?
+1. Graph the two variables using ggplot. 
+1. Add the best fit line to the graph. 
+
+
+### 2: Water quality analysis
+
+Go back to your work on water quality from the data manipulation and graphing exercises. What relationships were you exploring. Use statistical tests (when appropriate) to dig deeper into the water qualtiy data. You will use the water quality analysis and statistics for the Figure caption and results assignment in Moodle. 
+
+## New Functions
+- `lm()`
+- `geom_abline()`
+- `geom_smooth()` 
+
+## Resources
+
+- https://r-statistics.co/Linear-Regression.html#google_vignette
+- https://www.geeksforgeeks.org/add-regression-line-to-ggplot2-plot-in-r/
+- https://ucdavis-bioinformatics-training.github.io/2019-March-Bioinformatics-Prerequisites/thursday/linear_models.html
