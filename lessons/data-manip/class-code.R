@@ -75,3 +75,44 @@ climate |>
 
 head(climate)
 
+climate |>
+  distinct(year) |>
+  nrow()
+
+library(dplyr)
+climate |>
+  mutate(avg_temp = (tmin + tmax)/2)
+
+climate |>
+  group_by(year) |>
+  summarize(average_temp = mean(tmean),
+            average_precip = mean(precip),
+            N = n())
+
+climate |>
+  filter(year %in% 1990:1999) |>
+  group_by(year) |>
+  summarize(average_temp = mean(tmean), sd_temp = sd(tmean), average_precip = mean(precip), sd_precip = sd(precip))
+
+climate |>
+  group_by(year) |>
+  summarize(total_precip = sum(precip)) |>
+  arrange(desc(total_precip))
+
+
+climate |>
+  rename(avg_temperature = tmean) |>
+  head()
+
+raleigh_example |>
+  group_by(City) |>
+  summarize(Temp = mean(Temperature), Precip = mean(Precipitation))
+
+recode_raleigh <- raleigh_example |>
+  mutate(City = recode(City, Raleigh = "Raleigh, NC"))
+
+recode(raleigh_example$City, Raleigh = "Raleigh, NC")
+
+recode_raleigh |>
+  group_by(City) |>
+  summarize(Temp = mean(Temperature), Precip = mean(Precipitation))

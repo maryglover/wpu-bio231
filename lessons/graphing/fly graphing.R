@@ -35,6 +35,12 @@ ggplot(fly, aes(x = species, y = emerge_mean, fill = species)) +
   theme_classic() +
   labs(x = 'Species', y= 'Days to emergence', title = 'Fly emergence') +theme(text = element_text(size=20))
 
+# order by emergece
+fly$species <- with(fly, reorder(species , emerge_mean, median , na.rm=T))
+ggplot(fly, aes(x = reorder(species, emerge_mean), y = emerge_mean, fill = species)) +
+  geom_boxplot() + 
+  theme_classic() +
+  labs(x = 'Species', y= 'Days to emergence', title = 'Fly emergence') +theme(text = element_text(size=20))
 
 # bar plots
 ggplot(filter(fly, Coll.year == '2013'), aes(x = species, y = emerge_mean, fill = species)) +
@@ -134,3 +140,13 @@ ggplot(fly, aes(x = emerge_mean)) +
   geom_histogram(fill = 'darkgray', color = 'black') +
   xlab('Fly emergence')+
   theme_classic() +theme(text = element_text(size=20))
+
+
+plant.example <- data.frame(color = c('red', 'blue'), growth = c(8, 10), error = c(1.5, .75))
+
+ggplot(plant.example, aes(color, growth)) +
+  geom_point()+
+  geom_errorbar(aes(ymin = growth - error, ymax = growth + error))+
+  scale_y_continuous(limits=c(0,12)) +
+  theme_classic() +theme(text = element_text(size=20)) +
+
