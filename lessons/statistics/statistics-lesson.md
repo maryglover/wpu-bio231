@@ -17,7 +17,7 @@ layout: default
 ## Class materials
 
 - [Lesson](statistics-exercise.html)
-- Slides: coming soon...
+- [Slides](https://docs.google.com/presentation/d/1pD-paoiji7WLnaLgA4UklJUxSG3b3UbJirJSNGQVjTQ/edit?usp=sharing)
 
 ## Homework
 
