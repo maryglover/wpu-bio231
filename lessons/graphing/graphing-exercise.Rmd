@@ -264,17 +264,12 @@ ggsave(filename = "raleigh_mean_temp.png", temp_boxplot)
 ## Exercises
 
 ### Basic plotting
-Create a plot for the maximum temperature by year only for the month of July. Do you see a pattern? 
+Create a plot for the maximum temperature for each year only for the month of July. Do you see a pattern? 
 
-*Hint* You will have to filter the data first and decide what type of graph to use. 
+*Hint* You will have to filter the data first and decide what type of graph to use and what is on the x and y axes.
 
 ### Plotting with facets
-Using `facet_wrap` plot the maximum temperature by year, plotting each month. 
-
-### Water quality data
-Look back at your exercise for data manipulation with the City of Raleigh. Create plots to explore the relationships you looked at with `dplyr`.
-
-You will need to decide what types of graphs to use and what should go on each axis. 
+Using `facet_wrap` plot the maximum temperature by year, plotting each month. So you will have a plot for each month after the facet wrap.
 
 ## New functions
 

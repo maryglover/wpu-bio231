@@ -24,4 +24,3 @@ layout: default
 Submit the following in Moodle:
 
 1. Complete exercises for graphing
-1. Reading scientific article results
