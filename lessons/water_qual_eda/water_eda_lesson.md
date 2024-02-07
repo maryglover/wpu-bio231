@@ -20,7 +20,7 @@ layout: default
 
 ## Class materials
 - [Slides](https://docs.google.com/presentation/d/1Q11p-ixPFwTd0bQ8EzZZS3p_pPWDk1UUdF_NF7XH0g0/edit?usp=sharing)
-- [Stats activity data](../../data/stats_example.csv); this file has been added to your Rstudio projects.
+- [Stats activity data](https://drive.google.com/file/d/14zpw-SPGpZ4GayfFvXQToDt3a0ZERt5l/view?usp=sharing); this file has been added to your Rstudio projects.
 - [Data folder](https://drive.google.com/drive/folders/1ql4Ic3IKKQscsEqh-yXw7lSQ-QAQqwBP?usp=sharing)
 
 ## Homework
