@@ -46,6 +46,17 @@ clean.wq %>%
   summarize(E_coli = mean(E_coli, na.rm = T), 
             Temperature = mean(Temperature, na.rm = T))
 
+## Add units in the name of the column
+
+wq_units<-wq.det |>
+  distinct() |> # get rid of one duplicate
+  mutate(new_name = paste(Parameter, Unit, sep = '_')) |>
+  select(-Unit, -PQL) |>
+  pivot_wider(id_cols = c(Site, Date, Time), names_from = new_name, values_from = Result) 
+
+write.csv(wq_units, "data/raleigh_wq_clean-units.csv", row.names = F)
+
+
 
 #example plot
 library(ggplot2)
