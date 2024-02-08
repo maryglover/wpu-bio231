@@ -38,6 +38,7 @@ ggplot(data = climate, aes(x = tmean, y = precip)) +
 
 The graph shows us the relationship we are testing. We will use the function `lm()` to make a linear model. The linear model will "model" the "best fit line" of the relationship. Remember, a line equation is
  \(y = mx + b\), where:
+ 
  - y is the dependent variable
  - x is the independent variable
  - m is the slope of the line
