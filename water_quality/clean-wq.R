@@ -54,8 +54,18 @@ wq_units<-wq.det |>
   select(-Unit, -PQL) |>
   pivot_wider(id_cols = c(Site, Date, Time), names_from = new_name, values_from = Result) 
 
-write.csv(wq_units, "data/raleigh_wq_clean-units.csv", row.names = F)
+wq.det |>
+  filter(grepl("do", Parameter)) |>
+  group_by(Parameter, Unit)|>
+  summarise(mean = mean(Result, na.rm = T), 
+            max = max(Result, na.rm = T),
+            min = min(Result, na.rm = T))
 
+wq.det |>
+  separate(Date, into = c('Year', 'Month', 'Day'), sep ='-') |>
+  filter(Year == '2023', Month =='12') 
+  
+write.csv(wq_units, "data/raleigh_wq_clean-units.csv", row.names = F)
 
 
 #example plot
