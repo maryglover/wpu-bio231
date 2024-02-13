@@ -5,7 +5,7 @@ output:
     theme: cayman
 ---
 
-<span style="color:green">*Updated: 2/1/2024*</span>.
+<span style="color:green">*Updated: 2/12/2024*</span>.
 
 Schedule subject to change. All changes will be announced to students. 
 
