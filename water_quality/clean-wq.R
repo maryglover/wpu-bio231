@@ -6,6 +6,21 @@ library(tidyr)
 wq <- read.csv("data/raleigh_wq_2008_2023.csv")
 summary(wq)
 
+# view data rows where do doesn't match up
+wq |>
+  filter(Parameter == 'do_percent_sat' , Unit == 'mg/L')
+
+# only issue with mismatch is in HC7. All do units reported as mg/L. 
+wq |> 
+  filter(Site == 'HC7') |>
+  filter(grepl("do", Parameter)) |>
+  separate(Date, into = c('year', 'month', 'day'), sep = '-')|>
+  group_by(Parameter, Unit, year)|>
+  tally() |>
+  arrange(year)|>
+  print(n=33)
+
+
 # Make 0 if has a <
 wq$Result <- ifelse(grepl("<", wq$Result), "0", wq$Result)
 
