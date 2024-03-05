@@ -20,7 +20,6 @@ wq |>
   arrange(year)|>
   print(n=33)
 
-
 # Make 0 if has a <
 wq$Result <- ifelse(grepl("<", wq$Result), "0", wq$Result)
 
@@ -52,36 +51,20 @@ clean.wq <- wq.det |>
 
 write.csv(clean.wq, "data/raleigh_wq_clean.csv", row.names = F)
 
-## playing with data
-clean.wq %>%
-  filter(!grepl("DUP",Site)) |> # gets rid of duplicate sites
-  filter(!grepl("Dup",Site)) |>
-  separate(Date, into = c('Year', 'Month', 'Day'), sep = '-')|>
-  group_by(Site, Year)|>
-  summarize(E_coli = mean(E_coli, na.rm = T), 
-            Temperature = mean(Temperature, na.rm = T))
-
-## Add units in the name of the column
-
-wq_units<-wq.det |>
+##### Add units in the name of the column
+### fix the units
+wq_units <- wq.det |>
+  mutate(Unit = case_when(Parameter == 'do_percent_sat' ~ 'percent_sat', 
+                          .default = Unit)) |>
   distinct() |> # get rid of one duplicate
   mutate(new_name = paste(Parameter, Unit, sep = '_')) |>
   select(-Unit, -PQL) |>
-  pivot_wider(id_cols = c(Site, Date, Time), names_from = new_name, values_from = Result) 
+  pivot_wider(id_cols = c(Site, Date, Time), names_from = new_name, values_from = Result) |>
+  rename(do_percent_sat = do_percent_sat_percent_sat, do_mg_L = `do_mgl_mg/L`, pH = pH_std_unit)
 
-wq.det |>
-  filter(grepl("do", Parameter)) |>
-  group_by(Parameter, Unit)|>
-  summarise(mean = mean(Result, na.rm = T), 
-            max = max(Result, na.rm = T),
-            min = min(Result, na.rm = T))
-
-wq.det |>
-  separate(Date, into = c('Year', 'Month', 'Day'), sep ='-') |>
-  filter(Year == '2023', Month =='12') 
+wq_units<- rename_with(wq_units, ~ gsub("/", '_', .x))
   
 write.csv(wq_units, "data/raleigh_wq_clean-units.csv", row.names = F)
-
 
 #example plot
 library(ggplot2)
