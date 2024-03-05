@@ -1,5 +1,5 @@
 ---
-title: 'Water quality project introduction""
+title: "Water quality project introduction"
 output:
   html_document
 layout: default
