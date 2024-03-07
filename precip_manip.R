@@ -58,7 +58,13 @@ ppt.point <- extract(crop_stack, streams[,c(3,2)])
 row.names(ppt.point) <- streams$stream
 #ppt.name <- cbind( stream = streams$stream, ppt.point)
 
-writeRaster(crop_stack, 'data/wake_precip_stack.grd')
+#writeRaster(crop_stack, 'data/wake_precip_stack.tif')
+
+library(terra)
+#terra::writeRaster(crop_stack, 'data/wake_precip_stack.tif', overwrite = T)
+terra::writeRaster(crop_stack, 'data/wake_precip_stack.grd', overwrite = T)
+
+y <- raster::brick("data/wake_precip_stack.tif") 
 
 precip_clean <- melt(ppt.point, value.name = 'precip') |>
   tidyr::separate(col=Var2, sep = '_', into = c(NA, NA, NA,NA, 'data',NA) ) |>
