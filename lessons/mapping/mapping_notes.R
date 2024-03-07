@@ -64,3 +64,20 @@ basemap_satellite <- get_map(maptype = "satellite", location = bbox, zoom = 9)
 street_map <- ggmap(basemap_streets)
 satellite_map <- ggmap(basemap_satellite)
 print(street_map)
+
+
+## plot precipitation raster
+library(raster)
+library(ggplot2)
+precip <- brick("data/wake_precip_stack.grd")
+
+plot(precip)
+ggplot() +  
+  geom_tile(data=precip, aes(x=x, y=y, fill=value), alpha=0.8) + 
+  geom_polygon(data=OR, aes(x=long, y=lat, group=group), 
+               fill=NA, color="grey50", size=0.25) +
+  scale_fill_viridis() +
+  coord_equal() +
+  theme_map() +
+  theme(legend.position="bottom") +
+  theme(legend.key.width=unit(2, "cm"))
