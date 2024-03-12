@@ -68,10 +68,16 @@ y <- raster::brick("data/wake_precip_stack.tif")
 
 precip_clean <- melt(ppt.point, value.name = 'precip') |>
   tidyr::separate(col=Var2, sep = '_', into = c(NA, NA, NA,NA, 'data',NA) ) |>
-  separate(col=data, sep=4, into=c('year', 'month')) |>
-  separate(col = month, sep = 2, into=c('month', 'day'))  |>
-  separate(col = Var1, sep = '—', into=c('Site', 'Name' ))
+  mutate(Date = ymd(data), .keep = 'unused') |>
+  separate(col = Var1, sep = '—', into=c('Site', 'Stream' ))
 
+test <- melt(ppt.point, value.name = 'precip') |>
+  tidyr::separate(col=Var2, sep = '_', into = c(NA, NA, NA,NA, 'data',NA) ) |>
+  head()
+
+test |>
+  mutate(Date = ymd(data), .keep = 'unused')
+  ymd(as.numeric(data))
 write.csv(precip_clean, 'data/precip_stream_sites.csv', row.names = F)
 
 
