@@ -27,11 +27,27 @@ water |>
   geom_line()+
   geom_point()
 
+
 # missing data
 # what is missing data
+temp_fun <- function(x){
+  sum(!is.na(x))
+}
+water |>
+  filter(!grepl('DUP', Site, ignore.case = T)) |>
+  separate(Date, into = c('year', 'month', 'day'), sep = '-')|>
+  group_by( year) |>
+  summarise_all(temp_fun) |>
+  select( year, do_percent_sat, Copper_mg_L, Nitrogen_total_mg_L)
+
+water |>
+  separate(Date, into = c('year', 'month', 'day'), sep = '-')|>
+  filter(year == 2018)
 
 # joins
 
 
-
-
+## part of the exercise
+# use separate to on the stream codes to get column for lat and column for long
+precip <- read.csv("data/precip_stream_sites.csv")
+summary(precip)

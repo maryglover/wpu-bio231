@@ -87,7 +87,7 @@ wq |>
 ### fix the units
 wq_units <- wq.det |>
   mutate(Unit = case_when(Parameter == 'do_percent_sat' ~ 'percent_sat', 
-                          Parameter == 'MPN' ~ 'MPN/100mL',
+                          Unit == 'MPN' ~ 'MPN/100mL',
                           .default = Unit)) |>
   distinct() |> # get rid of one duplicate
   mutate(new_name = paste(Parameter, Unit, sep = '_')) |>
