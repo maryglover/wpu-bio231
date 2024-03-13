@@ -81,6 +81,23 @@ test |>
 write.csv(precip_clean, 'data/precip_stream_sites.csv', row.names = F)
 
 
+### how to get rolling sum
+
+precip_clean
+unique(water$Date)
+
+precip_prev5days <- precip_clean |>
+  group_by(Site, Stream) |>
+  arrange(Date) |>
+  mutate(sum_prev5 = zoo::rollsum(precip, k = 5, align = 'right', na.pad = TRUE))
+
+precip_prev5days |>
+  filter(Date %in% unique(water$Date)) |>
+  arrange(-precip)
+
+precip_prev5days |>
+  filter(Site == 'RB15', year(Date) == 2009, month(Date) ==6)
+
 # raster plot
 # precip last year
 files2023<- prism_archive_subset('ppt', 'daily', year = 2023)
