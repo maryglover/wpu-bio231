@@ -29,7 +29,7 @@ For the rest of the semester, we will be working with the City of Raleigh histor
 
 The original data that was sent over is in your data folder and is named `raleigh_wq_2008_2023.csv`
 
-**Exercise**: Open the data in excel or google sheets. Make a list of things you would need to do to original data set to get into the tidy format. 
+[**Exercise**](#tidy-water-quality-data): Open the data in excel or google sheets. Make a list of things you would need to do to original data set to get into the tidy format. 
 
 ## Dealing with missing data and outliers
 
@@ -54,9 +54,10 @@ library(dplyr)
 water |>
   filter(Site == 'PHB12', Date == '2023-12-07')
 ```
-Missing data in datasets is common and statistical models are able to hande NA data, so they should be left as is. However, it is good to know how much of the data is missing. For example, say you have 100 samples, but 20 are NA. This affects the amount of replicates you have to work with. 
 
-Let's explore a bit in the water quality data set. Often, you don't need to go over every NA upfront, but can evaluate as you run analyzes with the data. 
+Missing data in datasets is common. Statistical models handle them in different ways, so it is important to evaluate the statistical models individually.  You do not need to do anything to the NA values. However, it is good to know how much of the data is missing. For example, say you have 100 samples, but 20 are NA. This affects the amount of replicates you have to work with. 
+
+Let's explore a bit in the water quality data set. Often, you don't need to go over every NA upfront, but can evaluate as you run analyzes with the data.
 
 The `is.na()` function will tell you if values are NA. You will get a TRUE if NA, and a FALSE if not. 
 
@@ -79,7 +80,7 @@ water |>
   summarise(n_NA = sum(is.na(Salinity_ppt)), n = n())
 ```
 
-*Exercise* on your own play around with the data to explore how much missing data is in the dataset. 
+[**Exercise**](#missing-data): On your own play around with the data to explore how much missing data is in the dataset. 
 
 ### Outliers
 
@@ -88,12 +89,17 @@ There are cases where you have outliers in the data set. Outliers are values tha
 For example, if you were calculating the height of 10 people and had the following data, one is clearly due to a error. 
 
 ```{r}
-height= c(61, 69, 65, 72, 620, 67, 70, 71, 74, 68)
+height <- c(61, 69, 65, 72, 620, 67, 70, 71, 74, 68)
 height
-
 ```
 
-It certainly seems that an extra 0 was added to the end. If you can confirm this, you can change the value to the correct one. Otherwise, you should make an NA. You can do this using na_if() in `dplyr`. In `na_if` you supply arguments for the name of the vector you are editing and the value that should be turned to NA
+It certainly seems that an extra 0 was added to the end. If you can confirm this, you can change the value to the correct one. For example, you can use `recode()`.
+
+```{r}
+recode(height, `620` = 62)
+```
+
+Otherwise, you should make an NA. You can do this using na_if() in `dplyr`. In `na_if` you supply arguments for the name of the vector you are editing and the value that should be turned to NA
 
 ```{r}
 na_if(height, 620)
@@ -108,7 +114,7 @@ water |>
   head() 
 ```
 
-**Exercise**: How could you use mutate() and na_if() to deal with E. coli outlier. 
+[**Exercise**](#e-coli-outlier) How could you use mutate() and na_if() to deal with E. coli outlier. 
 
 ### Filtering with regular expressions
 
@@ -156,9 +162,9 @@ With the water quality data, the date is in the format yyyy-mm-dd. One thing tha
 
 `separate()` is in the `tidyr` package. So you will have to load it. 
 
-How would you use separate with the Date column?
+**How would you use separate with the Date column?**
 
-**Exercise** In the stream codes file ("raleigh_wq_stream_codes.csv", separate lat and long into two columns. You will need to set header = F in the `read.csv()` function
+[**Exercise**](#separate-stream-names) In the stream codes file ("raleigh_wq_stream_codes.csv", separate lat and long into two columns. You will need to set header = F in the `read.csv()` function
 
 ```{r, echo = F, warning=FALSE}
 library(tidyr)
@@ -192,7 +198,7 @@ water_edit |>
   head()
 ```
 
-**Exercise** This date format comes in handy when plotting. Choose 1 variable in 1 stream and plot with Date on the y axis
+[**Exercise**](#plot-with-date) This date format comes in handy when plotting. Choose 1 variable in 1 stream and plot with Date on the y axis
 
 ## Joins
 The water quality data set includes many water quality metrics. However, you may want to add in other data to use with the water quality data in your analysis. 
@@ -232,14 +238,28 @@ streams |>
   head()
 ```
 
+[**Exercise**](#join-precipitation) For homework, try to join in the precipitation data for the streams in the water quality data set. Do an analysis to see if precipitation affects one of the parameters.
+
 ## Exercises
 
-1. Open the data in excel or google sheets. Make a list of things you would need to do to original data set to get into the tidy format. 
-1. Play around with the data to explore how much missing data is in the dataset. 
-1. How could you use mutate() and na_if() to deal with E. coli outlier. 
-1. Use separate to make a column of lat and long in the stream codes. Use `write.csv()` to save the file so you can use later. 
-1. Choose 1 variable and 1 stream and plot with Date on the y axis
-1. Join stream precipitation data into water quality data set, using the dataset 'precip_stream_sites.csv'. This data set has the precipitation for each stream site for every day from 2008 - 2023. Choose one parameter (either E_coli_MPN, TSS_mg_L, Copper_mg_L) and run an analysis to see if the amount of rainfall impacts the value of the parameter. Include all code and a paragraph of your conclusions. 
+### Tidy water quality data
+
+Open the data in excel or google sheets. Make a list of things you would need to do to original data set to get into the tidy format. 
+
+### Missing data
+Play around with the data to explore how much missing data is in the dataset. 
+### E coli outlier
+
+How could you use mutate() and na_if() to deal with E. coli outlier. 
+
+### Separate stream names
+Use separate to make a column of lat and long in the stream codes. Use `write.csv()` to save the file so you can use later. 
+
+### Plot with Date
+Choose 1 variable and 1 stream and plot with Date on the y axis
+
+### Join precipitation
+Join stream precipitation data into water quality data set, using the dataset 'precip_stream_sites.csv'. This data set has the precipitation for each stream site for every day from 2008 - 2023. Choose one parameter (either E_coli_MPN, TSS_mg_L, Copper_mg_L) and run an analysis to see if the amount of rainfall impacts the value of the parameter. Include all code and a paragraph of your conclusions. 
 
 ## List of new functions
 - is.na

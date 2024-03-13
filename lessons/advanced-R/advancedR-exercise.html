@@ -1662,9 +1662,9 @@ Raleigh historic water quality data. This data was obtained using a
 records request with the city.</p>
 <p>The original data that was sent over is in your data folder and is
 named <code>raleigh_wq_2008_2023.csv</code></p>
-<p><strong>Exercise</strong>: Open the data in excel or google sheets.
-Make a list of things you would need to do to original data set to get
-into the tidy format.</p>
+<p><a href="#tidy-water-quality-data"><strong>Exercise</strong></a>:
+Open the data in excel or google sheets. Make a list of things you would
+need to do to original data set to get into the tidy format.</p>
 </div>
 <div id="dealing-with-missing-data-and-outliers" class="section level2">
 <h2>Dealing with missing data and outliers</h2>
@@ -1702,11 +1702,12 @@ water |&gt;
 ## 1      4.6                 1.4          1.4        0    0.0134          NA
 ##   E_coli_CFU_100mL
 ## 1               NA</code></pre>
-<p>Missing data in datasets is common and statistical models are able to
-hande NA data, so they should be left as is. However, it is good to know
-how much of the data is missing. For example, say you have 100 samples,
-but 20 are NA. This affects the amount of replicates you have to work
-with.</p>
+<p>Missing data in datasets is common. Statistical models handle them in
+different ways, so it is important to evaluate the statistical models
+individually. You do not need to do anything to the NA values. However,
+it is good to know how much of the data is missing. For example, say you
+have 100 samples, but 20 are NA. This affects the amount of replicates
+you have to work with.</p>
 <p>Let’s explore a bit in the water quality data set. Often, you don’t
 need to go over every NA upfront, but can evaluate as you run analyzes
 with the data.</p>
@@ -1740,8 +1741,9 @@ also use <code>n()</code> to get total number of values</p>
 ##  9 CC5             51    74
 ## 10 HC7             50    74
 ## # ℹ 18 more rows</code></pre>
-<p><em>Exercise</em> on your own play around with the data to explore
-how much missing data is in the dataset.</p>
+<p><a href="#missing-data"><strong>Exercise</strong></a>: On your own
+play around with the data to explore how much missing data is in the
+dataset.</p>
 <div id="outliers" class="section level3">
 <h3>Outliers</h3>
 <p>There are cases where you have outliers in the data set. Outliers are
@@ -1756,12 +1758,15 @@ due an error, you can change it to an NA or missing value, instead of
 removing it entirely.</p>
 <p>For example, if you were calculating the height of 10 people and had
 the following data, one is clearly due to a error.</p>
-<pre class="r"><code>height= c(61, 69, 65, 72, 620, 67, 70, 71, 74, 68)
+<pre class="r"><code>height &lt;- c(61, 69, 65, 72, 620, 67, 70, 71, 74, 68)
 height</code></pre>
 <pre><code>##  [1]  61  69  65  72 620  67  70  71  74  68</code></pre>
 <p>It certainly seems that an extra 0 was added to the end. If you can
-confirm this, you can change the value to the correct one. Otherwise,
-you should make an NA. You can do this using na_if() in
+confirm this, you can change the value to the correct one. For example,
+you can use <code>recode()</code>.</p>
+<pre class="r"><code>recode(height, `620` = 62)</code></pre>
+<pre><code>##  [1] 61 69 65 72 62 67 70 71 74 68</code></pre>
+<p>Otherwise, you should make an NA. You can do this using na_if() in
 <code>dplyr</code>. In <code>na_if</code> you supply arguments for the
 name of the vector you are editing and the value that should be turned
 to NA</p>
@@ -1780,8 +1785,8 @@ the E_coli_MPN_100mL parameter.</p>
 ## 4  LBC8 2012-03-20            24200
 ## 5  RB15 2012-03-20            24200
 ## 6  TC17 2012-03-20            24200</code></pre>
-<p><strong>Exercise</strong>: How could you use mutate() and na_if() to
-deal with E. coli outlier.</p>
+<p><a href="#e-coli-outlier"><strong>Exercise</strong></a> How could you
+use mutate() and na_if() to deal with E. coli outlier.</p>
 </div>
 <div id="filtering-with-regular-expressions" class="section level3">
 <h3>Filtering with regular expressions</h3>
@@ -1861,11 +1866,11 @@ number of names as new columns.</li>
 </ol>
 <p><code>separate()</code> is in the <code>tidyr</code> package. So you
 will have to load it.</p>
-<p>How would you use separate with the Date column?</p>
-<p><strong>Exercise</strong> In the stream codes file
-(“raleigh_wq_stream_codes.csv”, separate lat and long into two columns.
-You will need to set header = F in the <code>read.csv()</code>
-function</p>
+<p><strong>How would you use separate with the Date column?</strong></p>
+<p><a href="#separate-stream-names"><strong>Exercise</strong></a> In the
+stream codes file (“raleigh_wq_stream_codes.csv”, separate lat and long
+into two columns. You will need to set header = F in the
+<code>read.csv()</code> function</p>
 <div id="lubridate" class="section level3">
 <h3>Lubridate</h3>
 <p>While the separate function allows us now to use each individual unit
@@ -1958,9 +1963,9 @@ year() with mutate() to get a column for the year.</p>
 ## 4               NA 2008
 ## 5               NA 2008
 ## 6               NA 2008</code></pre>
-<p><strong>Exercise</strong> This date format comes in handy when
-plotting. Choose 1 variable in 1 stream and plot with Date on the y
-axis</p>
+<p><a href="#plot-with-date"><strong>Exercise</strong></a> This date
+format comes in handy when plotting. Choose 1 variable in 1 stream and
+plot with Date on the y axis</p>
 </div>
 </div>
 <div id="joins" class="section level2">
@@ -2082,26 +2087,43 @@ names do not match.</p>
 ## 4          NA               NA
 ## 5          NA               NA
 ## 6          NA               NA</code></pre>
+<p><a href="#join-precipitation"><strong>Exercise</strong></a> For
+homework, try to join in the precipitation data for the streams in the
+water quality data set. Do an analysis to see if precipitation affects
+one of the parameters.</p>
 </div>
 <div id="exercises" class="section level2">
 <h2>Exercises</h2>
-<ol style="list-style-type: decimal">
-<li>Open the data in excel or google sheets. Make a list of things you
-would need to do to original data set to get into the tidy format.</li>
-<li>Play around with the data to explore how much missing data is in the
-dataset.</li>
-<li>How could you use mutate() and na_if() to deal with E. coli
-outlier.</li>
-<li>Use separate to make a column of lat and long in the stream codes.
-Use <code>write.csv()</code> to save the file so you can use later.</li>
-<li>Choose 1 variable and 1 stream and plot with Date on the y axis</li>
-<li>Join stream precipitation data into water quality data set, using
-the dataset ‘precip_stream_sites.csv’. This data set has the
-precipitation for each stream site for every day from 2008 - 2023.
-Choose one parameter (either E_coli_MPN, TSS_mg_L, Copper_mg_L) and run
-an analysis to see if the amount of rainfall impacts the value of the
-parameter. Include all code and a paragraph of your conclusions.</li>
-</ol>
+<div id="tidy-water-quality-data" class="section level3">
+<h3>Tidy water quality data</h3>
+<p>Open the data in excel or google sheets. Make a list of things you
+would need to do to original data set to get into the tidy format.</p>
+</div>
+<div id="missing-data" class="section level3">
+<h3>Missing data</h3>
+<p>Play around with the data to explore how much missing data is in the
+dataset. ### E coli outlier</p>
+<p>How could you use mutate() and na_if() to deal with E. coli
+outlier.</p>
+</div>
+<div id="separate-stream-names" class="section level3">
+<h3>Separate stream names</h3>
+<p>Use separate to make a column of lat and long in the stream codes.
+Use <code>write.csv()</code> to save the file so you can use later.</p>
+</div>
+<div id="plot-with-date" class="section level3">
+<h3>Plot with Date</h3>
+<p>Choose 1 variable and 1 stream and plot with Date on the y axis</p>
+</div>
+<div id="join-precipitation" class="section level3">
+<h3>Join precipitation</h3>
+<p>Join stream precipitation data into water quality data set, using the
+dataset ‘precip_stream_sites.csv’. This data set has the precipitation
+for each stream site for every day from 2008 - 2023. Choose one
+parameter (either E_coli_MPN, TSS_mg_L, Copper_mg_L) and run an analysis
+to see if the amount of rainfall impacts the value of the parameter.
+Include all code and a paragraph of your conclusions.</p>
+</div>
 </div>
 <div id="list-of-new-functions" class="section level2">
 <h2>List of new functions</h2>
