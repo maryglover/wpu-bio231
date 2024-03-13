@@ -14,7 +14,7 @@ layout: default
 - Join together data from different datasets
 
 ## Class materials
-- [Lesson]()
+- [Lesson](advancedR-exercise.html)
 - [Data folder](https://drive.google.com/drive/folders/1ql4Ic3IKKQscsEqh-yXw7lSQ-QAQqwBP?usp=sharing)
 
 ## Homework
