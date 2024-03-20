@@ -104,3 +104,34 @@ files2023<- prism_archive_subset('ppt', 'daily', year = 2023)
 stack2023 <- pd_stack(files2023)
 avg2023 <- mean(stack2023)
 plot(avg2023)
+
+
+## climate yearlys 
+library(prism)
+# get yearly data
+prism_set_dl_dir('prism-climate-data/')
+get_prism_annual(type = 'ppt', year = 2008:2023, keepZip = F)
+get_prism_annual(type = 'tmean', year = 2008:2023, keepZip = F)
+get_prism_annual(type = 'tmin', year = 2008:2023, keepZip = F)
+get_prism_annual(type = 'tmax', year = 2008:2023, keepZip = F)
+
+# mask for wake county shape
+
+year_ppt_files<- prism_archive_subset('ppt', 'annual')
+year_ppt <- pd_stack(year_ppt_files)
+
+avg_ppt <- mean(year_ppt)
+plot(avg_ppt)
+
+year_ppt_crop <- crop(year_ppt, county_bbox)
+year_ppt_mask <- mask(year_ppt_crop, county)
+plot(year_ppt_mask)
+
+library(stars)
+year_ppt.st <- st_as_stars(year_ppt_mask)
+ggplot() +
+  geom_stars(data = year_ppt.st) +
+  geom_sf(data = county, fill = NA, linewidth=2) +
+  theme_map() 
+
+st_extract(year_ppt.st, park)
