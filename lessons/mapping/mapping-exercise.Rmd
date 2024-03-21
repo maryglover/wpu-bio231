@@ -421,5 +421,12 @@ This gives you the raster stack that you can work with.
 
 ### Road map layers
 
+ 
+library(ggspatial) 
+  ggplot() +
+  annotation_map_tile(type = 'cartolight', zoomin = -1)+ 
+    geom_sf(data = streams, color = 'blue', linewidth = 2) +
+    geom_sf(data = county, color = 'black', fill = 'transparent',  linewidth = 3)
+    
 ## References
 Color: https://ggplot2-book.org/scales-colour

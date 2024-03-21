@@ -248,6 +248,7 @@ Open the data in excel or google sheets. Make a list of things you would need to
 
 ### Missing data
 Play around with the data to explore how much missing data is in the dataset. 
+
 ### E coli outlier
 
 How could you use mutate() and na_if() to deal with E. coli outlier. 
