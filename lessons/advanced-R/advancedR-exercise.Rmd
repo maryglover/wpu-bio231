@@ -254,10 +254,10 @@ Play around with the data to explore how much missing data is in the dataset.
 How could you use mutate() and na_if() to deal with E. coli outlier. 
 
 ### Separate stream names
-Use separate to make a column of lat and long in the stream codes. Use `write.csv()` to save the file so you can use later. 
+Use separate to make a column of lat and long in the stream codes file (raleigh_wq_stream_codes.csv). Use `write.csv()` to save the file so you can use later. 
 
 ### Plot with Date
-Choose 1 variable and 1 stream and plot with Date on the y axis
+Choose 1 variable and 1 stream and plot with Date on the x axis
 
 ### Join precipitation
 Join stream precipitation data into water quality data set, using the dataset 'precip_stream_sites.csv'. This data set has the precipitation for each stream site for every day from 2008 - 2023. Choose one parameter (either E_coli_MPN, TSS_mg_L, Copper_mg_L) and run an analysis to see if the amount of rainfall impacts the value of the parameter. Include all code and a paragraph of your conclusions. 
