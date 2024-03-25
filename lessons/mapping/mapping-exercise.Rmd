@@ -405,7 +405,7 @@ Complete the following exercises for homework. Submit your code in Moodle.
 
 1. Plot the streams in Wake County. Add the points for each of the locations that were evaluated by the City of Raleigh. You will need to use the modified stream codes file, where you separated the latitude and longitude into separate columns. 
 
-2. Upload the precipitation raster file from the class data folder into your R workspace. Read in the raster and take the average of all the stacks (years 2013 - 2023). Plot the raster file using `geom_spatraster` and change the color scheme to one of your choice.
+2. Upload the precipitation raster file from the class data folder into your R workspace titled precip_2013_2023.grd. Also, upload the associated .gri file into the folder.  Read in the .grd raster and take the average of all the stacks (years 2013 - 2023). Plot the raster file using `geom_spatraster` and change the color scheme to one of your choice.
 
 **Optional Reach problem**
 

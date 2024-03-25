@@ -1,6 +1,7 @@
 # get precipitation data
 
 library(dplyr)
+library(tidyr)
 library(prism)
 library(sf)
 library(raster)
@@ -135,3 +136,5 @@ ggplot() +
   theme_map() 
 
 st_extract(year_ppt.st, park)
+
+
