@@ -81,7 +81,6 @@ test |>
   ymd(as.numeric(data))
 write.csv(precip_clean, 'data/precip_stream_sites.csv', row.names = F)
 
-
 ### how to get rolling sum
 
 precip_clean

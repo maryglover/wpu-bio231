@@ -59,34 +59,34 @@ In the last example, we plotted a polygon simply by connecting points with lines
 
 ```{r, include=FALSE}
 library(sf)
-streams <- st_read('../../data/Major_Rivers/')
+rivers <- st_read('../../data/Major_Rivers/')
 ```
 
 ```{r, eval = F}
 library(sf)
-streams <- st_read('data/Major_Rivers/')
+rivers <- st_read('data/Major_Rivers/')
 ```
 You can already see that this is different than a regular csv file, with information about the geographic data shown as you import the data. Specifically, you can see that the coordinates are XY, a "bounding box" or dimensions, and a coordinate system (Projected CRS). 
 
 You can also see in the data a column for the geometry. This determines the shape of each stream. 
 
 ```{r}
-head(streams)
-streams$geometry[1]
+head(rivers)
+rivers$geometry[1]
 ```
 
 You can use the functions `st_bbox` to find the boundaries of the file and `st_crs` to view the coordinate system information. 
 
 ```{r}
-st_bbox(streams)
-st_crs(streams)
+st_bbox(rivers)
+st_crs(rivers)
 ```
 
 To plot the streams, you can use the layer `geom_sf`. You do not need to specify any x and y values here as you did in the last example. Because there is already a coordinate system associated with the file, ggplot will automatically plot in the given coordinate system. 
 
 ```{r}
 ggplot() +
-  geom_sf(data = streams, color = 'blue')
+  geom_sf(data = rivers, color = 'blue')
 ```
 
 Although the data has associated geometries, you can still manipulate the data frame, for example, using `dplyr`. 
@@ -94,20 +94,20 @@ Although the data has associated geometries, you can still manipulate the data f
 We can use `distinct` to find each stream in the data or can filter for specific streams. 
 
 ```{r}
-streams |>
+rivers |>
   distinct(NAME)
 
-streams |>
+rivers |>
   filter(NAME == 'Cemetery Branch') 
 ```
 
 For fun, let's plot just Cemetery Branch over the other streams in a different color to highlight it. 
 
 ```{r}
-cemetery_branch<- filter(streams, NAME == 'Cemetery Branch')
+cemetery_branch<- filter(rivers, NAME == 'Cemetery Branch')
 
 ggplot() +
-  geom_sf(data = streams, color ='cornflowerblue') +
+  geom_sf(data = rivers, color ='cornflowerblue') +
   geom_sf(data = cemetery_branch, color = 'red') + 
   theme_minimal()
 ```
@@ -140,13 +140,13 @@ You can see that the units for each are still not the same.
 
 ```{r}
 st_bbox(park)
-st_bbox(streams)
+st_bbox(rivers)
 ```
 
 We can change the coordinate systems using `st_transform.` We will do this for each of the objects to make sure they are on the same system. Most coordinate systems have a unique EPSG number. Here, we will use [EPSG 4269](https://epsg.io/4269), which is the same North American Datum 1983 system as before, but by transforming it, it will turn units to GPS coordinates. We also have to set the crs when making the point in for the point by setting the crs with `st_stc`. 
 
 ```{r}
-streams <- st_transform(streams, crs = 4269)
+rivers <- st_transform(rivers, crs = 4269)
 park <- st_sfc(park,crs =4269)
 ```
 
@@ -154,7 +154,7 @@ Now, plot again.
 
 ```{r}
 ggplot() +
-  geom_sf(data = streams, color = 'blue') + 
+  geom_sf(data = rivers, color = 'blue') + 
   geom_sf(data = park, color = 'red') +
   theme_minimal()
 ```
@@ -163,7 +163,7 @@ This previous way of plotted points used a spatial data object for the points. H
 
 ```{r}
 ggplot() +
-  geom_sf(data = streams, color = 'blue')+
+  geom_sf(data = rivers, color = 'blue')+
   geom_point(aes(x = -78.62475, y = 35.79474), color = 'red') +
     theme_minimal()
 ```
@@ -204,7 +204,7 @@ Now, we can use `st_crop` to crop the streams based on the shape file for Raleig
 
 ```{r, message=FALSE}
 raleigh <- st_transform(raleigh, crs = 4269)
-raleigh_stream <- st_crop(streams, raleigh) 
+raleigh_stream <- st_crop(rivers, raleigh) 
 
 ggplot() +
   geom_sf(data = raleigh, fill = 'lightgray', linewidth = 1) +
@@ -322,19 +322,20 @@ wake_temp <- mask(wake_temp, county)
 
 To plot this, we can then use the `geom_spatraster` from the `tidyterra` package.  Here, to show the temperature, we have to set the fill to the column "mean", which is the name of the values in the raster file. You can find this out using the `names` function on the raster. 
 
-```{r, message==F}
+```{r, message = F}
 library(tidyterra)
 ggplot()+
   geom_spatraster(data = wake_temp, aes(fill = mean)) +
   theme_minimal()
 ```
+
 We can also add additional layers to the plot just like usual in ggplot. For example, I'll add in the streams and Wake County line. You can also see that the NA values (those outside of Wake County) are automatically diplayed as gray. You can change that in the `scale_fill_continuous` layer by setting na.value to "transparent"
 
 ```{r}
 ggplot()+
   geom_spatraster(data = wake_temp, aes(fill = mean)) +
   geom_sf(data = county, fill = 'transparent', linewidth = 1.5) + 
-  geom_sf(data = streams, color = 'orange')+
+  geom_sf(data = rivers, color = 'orange')+
    theme_minimal()+
   scale_fill_continuous(na.value = "transparent") 
 ```
@@ -397,6 +398,7 @@ ggplot()+
   scale_fill_gradientn(colors = topo.colors(10),  na.value = "transparent") +
   theme_minimal()
 ```
+
 Again, there are many palettes available loaded in R or that you can load from additional packages. Feel free to search and have fun with it!
 
 ## Exercises
@@ -420,12 +422,12 @@ With the City of Raleigh water quality data set, choose 1 parameter to investiga
 
 ## New functions
 
-ggplot2
+*ggplot2*
 
 - geom_polygon()
 - coord_map()
 
-sf
+*sf*
 
 - st_read()
 - st_transform()
@@ -434,11 +436,11 @@ sf
 - st_sfc()
 - geom_sf()
 
-terra
+*terra*
 
 - rast()
 
-tidyterra
+*tidyterra*
 
 - geom_spatraster()
 
