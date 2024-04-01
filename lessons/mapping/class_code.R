@@ -164,3 +164,4 @@ ggplot() +
   annotation_map_tile(type = 'osm', zoomin = -1)+
   geom_sf(data = raleigh_stream, color = 'darkblue', linewidth = 1.5) +
   theme_void()  
+
