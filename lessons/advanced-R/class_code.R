@@ -56,6 +56,27 @@ library(lubridate)
 water_edit <- water_edit |>
   mutate(Date = ymd(Date)) |>
   head()
+
 water_edit |>
   mutate(year = year(Date))|>
   head()
+
+## Tuesday March 26
+stream_sep <- streams |>
+  separate(V2, into = c('Lat', 'Long'), sep =',') |>
+  separate(V1, into = c('Site', 'Stream'), sep = '—') |>
+  filter(!is.na(Stream))
+
+head(water_edit)
+
+full_join(water_edit, stream_sep) |>
+  head()
+
+streams |>
+  separate(V1, into = c('Code', 'Stream'), sep = '—') |>
+  select(Code, Stream) |>
+  right_join(water, by = c('Code' = 'Site')) |>
+  head()
+
+precip <- read.csv('data/precip_stream_sites.csv')
+head(precip)
