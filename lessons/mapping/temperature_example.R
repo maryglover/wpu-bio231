@@ -17,20 +17,20 @@ writeRaster(tmean20s, 'data/tmean_2019_2023.grd', overwrite = T)
 
 pd_stack(prism_archive_subset('tmean', 'annual', years = 2023)) |>
   writeRaster('data/tmean_2023.grd')
-writeRaster(tmean20s, 'data/tmean_2019_2023.grd', overwrite = T)
 
 
 ## precipitation 
 library(prism)
 prism_set_dl_dir('prism-climate-data/')
-get_prism_annual(type = 'ppt', year = 2013:2023, keepZip = F)
+#get_prism_annual(type = 'ppt', year = 2013:2023, keepZip = F)
 
 ppt_files<- prism_archive_subset('ppt', 'annual', years = 2013:2023)
 ppt <- pd_stack(ppt_files)
-terra::writeRaster(ppt, 'data/precip_2013_2023.grd', overwrite = T)
-plot(ppt)
 
+#ppt_sr <- as(ppt, "SpatRaster")
 
-library(terra)
-temp<-rast('data/tmean_1991_1995.grd' )
-plot(temp)
+raster::writeRaster(ppt, 'data/precip_2013_2023.grd', overwrite = T)
+#terra::writeRaster(ppt_sr, 'data/precip_2013_2023.grd', overwrite = T) Doesn't work
+
+rast('data/precip_2013_2023.grd')
+
