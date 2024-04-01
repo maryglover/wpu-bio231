@@ -43,7 +43,7 @@ water_edit <- water |>
   mutate(E_coli_MPN_100mL = na_if(E_coli_MPN_100mL, 155310)) |>
   filter(!grepl('DUP', Site, ignore.case = T))
 
-write.csv(water_edit, "raleigh_wq_edit.csv")
+write.csv(water_edit, "data/raleigh_wq_edit.csv", row.names = F)
 
 head(water)
 
