@@ -25,7 +25,7 @@ prism_set_dl_dir('prism-climate-data/')
 #get_prism_dailys('ppt', minDate = "2018-01-01", maxDate = "2023-12-31", keepZip = F)
 
 #precip.2023 <- prism_archive_subset('ppt', 'daily', year = 2023) |>
-  pd_stack() 
+#  pd_stack() 
 
 #precip <- prism_archive_subset('ppt', 'daily') |>
 #  pd_stack() 
@@ -136,4 +136,43 @@ ggplot() +
 
 st_extract(year_ppt.st, park)
 
+
+## class code example
+precip <- read.csv('data/precip_stream_sites.csv')
+head(precip)
+
+wq <- read.csv('data/raleigh_wq_edit.csv')
+head(wq)
+
+wq_precip <- left_join(wq, precip)
+head(wq_precip)
+
+tss_precip <- lm(data = wq_precip, TSS_mg_L ~ precip)
+summary(tss_precip)
+
+ggplot(data = wq_precip, aes(x = precip, y = TSS_mg_L)) +
+  geom_point()+
+  geom_smooth(method = 'lm')
+
+precip5day <- precip |>
+  group_by(Site, Stream) |>
+  arrange(Date) |>
+  mutate(sum_prev5 = zoo::rollsum(precip, k = 5, align = 'right', na.pad = TRUE))
+
+wq_precip5day<- left_join(wq, precip5day) 
+
+head(wq_precip5day)
+tss_precip5day <- lm(data = wq_precip5day, TSS_mg_L ~ sum_prev5)
+summary(tss_precip5day)
+
+ggplot(data = wq_precip5day, aes(x = sum_prev5, y = TSS_mg_L)) +
+  geom_point()+
+  geom_smooth(method = 'lm') +
+  scale_y_continuous(trans = 'log1p', breaks = c(10, 100, 1000, 10000))
+
+
+ggplot(data = wq_precip, aes(x = precip, y = TSS_mg_L)) +
+  geom_point()+
+  geom_smooth(method = 'lm') +
+  scale_y_continuous(trans = 'log1p', breaks = c(10, 100, 1000, 10000))
 

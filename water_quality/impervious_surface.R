@@ -67,9 +67,19 @@ raster::extract(impervious, streams[,c(3,2)])
 
 ## land cover data with feddata
 library(FedData)
-# crop to wake county using county shape file as template
-lc_wake <- get_nlcd(template = county, label = 'wake', year = 2021, dataset = 'landcover')
+library(sf)
 
-plot(lc_wake)
+county <- st_read('data/Wake_County_Line-shp/')
+county <- st_transform(county, crs = 4269)
+
+impervious_wake <- get_nlcd(template = county, label = 'wake', year = 2021, dataset = 'impervious')
+
+impervious_wake <- subst(impervious_wake, NA, 0) 
+
+impervious_wake <- project(impervious_wake, "EPSG:4269")
+
+impervious_mask <- mask(impervious_wake, county)
+
 ggplot()+
-  geom_spatraster(data = lc_wake, aes(fill = Class)) 
+  geom_spatraster(data = impervious_mask) +
+  scale_fill_continuous(na.value = 'transparent')
