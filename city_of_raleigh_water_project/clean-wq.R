@@ -99,12 +99,3 @@ wq_units<- rename_with(wq_units, ~ gsub("/", '_', .x))
   
 write.csv(wq_units, "data/raleigh_wq_clean-units.csv", row.names = F)
 
-#example plot
-library(ggplot2)
-
-clean.wq %>%
-  filter(!grepl("DUP",Site)) |> # gets rid of duplicate sites
-  filter(!grepl("Dup",Site)) |>
-  separate(Date, into = c('Year', 'Month', 'Day'), sep = '-')|>
-  ggplot(aes(x = Temperature, y = E_coli)) +
-  geom_point() 

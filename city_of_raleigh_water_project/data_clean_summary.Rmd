@@ -1,0 +1,235 @@
+---
+title: "Water Quality Data Manipulation"
+author: "Mary Glover"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Objective
+
+This document walks through data cleaning done by environmental data analysis students at William Peace University. The data was obtained from a records request from the City of Raleigh for the historic water quality records from 2008 to 2023. 
+
+## Data clean-up
+
+Data from the City of Raleigh was saved as a csv file to load into R. Here, it is loaded into R as object `wq` and we can see the first 20 rows. 
+
+```{r}
+wq <- read.csv("../data/raleigh_wq_2008_2023.csv")
+head(wq, 20)
+```
+
+To clean up the data, we will load in the necessary packages.
+
+```{r, message = F}
+library(dplyr)
+library(stringr)
+library(tidyr)
+```
+
+In the first few rows, you can see that some of the results are recorded as less than a value (ex. <0.05). To analyze the data, all results values need to be numeric, so all instances of "<" in the Result column are recoded as "0". 
+
+```{r}
+wq$Result <- ifelse(grepl("<", wq$Result), "0", wq$Result)
+```
+
+In some cases, results are recorded as not detected or ND. These are also made into 0's in the Result column. The resulting data table is saved as a new object `wq.det`.
+  
+```{r}
+wq.det <- wq |>
+  mutate(Result = recode(Result, ND = '0')) 
+```
+
+The Result column can then be converted to a numeric class, since now all the values are numeric. 
+
+```{r}
+wq.det$Result<-as.numeric(wq.det$Result)
+summary(wq.det)
+```
+
+Next, to make for easier analysis, we wanted to make each characteristic measured it's own column, instead of having one result column. This is the "tidy" data format. We can use the `dplyr` package and the `pivot_wider` function. In the following code, the columns Unit and PQL are removed. Then we "widen" the data with `pivot_wider`. The column names will come from the Parameter column and the data in the cells from the Result colum. This means that each different Parameter will have it's own column. 
+
+```{r}
+wq.det |>
+  dplyr::select(-Unit, -PQL)|>
+  pivot_wider(id_cols = c(Site, Date, Time), names_from = Parameter, values_from = Result)
+```
+
+When we run this, we see that there is an error, indicating that there is a duplicate. For one of the Parameters, there is not a one unique row for a specific Site, Date, and Time. To find the duplicate, we can use the suggested code. 
+
+```{r}
+wq.det %>%
+  dplyr::group_by(Site, Date, Time, Parameter) %>%
+  dplyr::summarise(n = dplyr::n()) %>%
+  dplyr::filter(n > 1) 
+```
+
+You can see that at Site MC10 on December 22, there are 2 rows for Salinity. Let's filter to only show those MC10 at that specific time point.  
+
+```{r}
+wq.det %>%
+  filter(Site=='MC10', Time == "10:29")
+```
+You can see that ere are 2 Salinity values and that they are the same. So we will need to get rid of the duplicates. We can do that by filltering for distinct rows using `distinct`
+
+```{r}
+wq.det |>
+  distinct() |> # get rid of one duplicate
+  dplyr::select(-Unit, -PQL) |>
+  pivot_wider(id_cols = c(Site, Date, Time), names_from = Parameter, values_from = Result) 
+```
+This gives us the output we want with one column fro every parameter. 
+
+### Dealing with the units
+However, in this way, we have gotten rid of the units. We want to add these back in the names of the columns. 
+
+But first, we noticed a few other things to clean up with the units. 
+
+In one case, the units do not match up with the parameter for DO. The Parameter indicates unit of percent_sat and Unit as mg/L. 
+
+```{r}
+wq |>
+  filter(Parameter == 'do_percent_sat' , Unit == 'mg/L')
+```
+
+This only is an issue in HC7. All DO units reported as mg/L. 
+Below is a summary of HC7 for DO. IT appears mg/L was indicated as unit for all measurments until 2021.
+
+```{r}
+wq |> 
+  filter(Site == 'HC7') |>
+  filter(grepl("do", Parameter)) |>
+  separate(Date, into = c('year', 'month', 'day'), sep = '-')|>
+  group_by(Parameter, Unit, year)|>
+  tally() |>
+  arrange(year)|>
+  print(n=33)
+```
+
+There is also some discrepancy in the units for E. coli. 
+
+First, it appears that E. coli has three different units measured. 
+
+```{r}
+wq |>
+  filter(Parameter == 'E_coli') |>
+  distinct(Unit)
+```
+
+When looking at the data, there is never an instance where E. coli was measured more than once on a specific day, but how it was measured varied. 
+
+Here, we look at what units were used by year. We converted the date to a date class in R using the `lubridate` package
+
+```{r}
+library(lubridate)
+wq |> 
+  mutate(Date = ymd(Date)) |>
+  mutate(Year = year(Date))|>
+  filter(Parameter == 'E_coli')|>
+  group_by(Year, Unit)|>
+  summarize(n_na = sum(is.na(Result)), n = n())
+```
+
+You can see that up until 2020, unit was recorded as MPN. After that, it was recorded as MPN/100mL. These units will need to match. Also, for part of 2021 and 2022, E. coli was measured as CFU/100mL. To keep this straight, we will have separate columns for E. coli for CFU vs. MPN measurements. We will use the MPN measurements for analysis. 
+
+To update the unit column, update Unit to 'percent_sat' whenever Parameter is "do_percent_sat" and also recode MPN to MPN/100mL to match other unit. 
+
+```{r}
+wq_units <- wq.det |>
+  mutate(Unit = case_when(Parameter == 'do_percent_sat' ~ 'percent_sat', 
+                          Unit == 'MPN' ~ 'MPN/100mL',
+                          .default = Unit)) 
+```
+
+We will also use the `distinct` function to remove the one duplicate row from HC7 Salinity. 
+
+```{r}
+wq_units <- distinct(wq_units)
+```
+
+We will now create a new column called "new_name" where we paste the parameter and the unit together.
+
+```{r}
+wq_units <- wq_units|>
+  mutate(new_name = paste(Parameter, Unit, sep = '_'))
+head(wq_units)
+```
+Next, we try again to "pivot" the table to make eack parameter it's own column and remove the Unit and PQL columns. 
+
+```{r}
+wq_units <- wq_units |>
+  mutate(new_name = paste(Parameter, Unit, sep = '_')) |>
+  select(-Unit, -PQL) |>
+  pivot_wider(id_cols = c(Site, Date, Time), names_from = new_name, values_from = Result) 
+head(wq_units)
+```
+
+Now, we have our data table in the format we want. However, to make it easier to work with we will rename a couple of the columns. For DO, since the unit was in the Parameter name, the unit is in the column name twice. We will also rename the pH column to just pH instead of pH_std_unit. 
+
+```{r}
+wq_units <- wq_units |>
+  rename(do_percent_sat = do_percent_sat_percent_sat, do_mg_L = `do_mgl_mg/L`, pH = pH_std_unit)
+```
+
+We will also replace any "/" with "_" to make the data easier to work with in R using the `replace_with` function
+
+```{r}
+wq_units<- rename_with(wq_units, ~ gsub("/", '_', .x))
+```
+ 
+Lastly, we will save the table as "raleigh_wq_clean-units.csv"
+
+```
+write.csv(wq_units, "data/raleigh_wq_clean-units.csv", row.names = F)
+```
+
+## Exploring the Data
+
+Now the data is ready to explore in R!
+
+For example, we could plot a boxplot of the Phosphorus values at diffferent sites. We will use the package `ggplot2`
+
+```{r, message = F}
+library(ggplot2)
+ggplot(wq_units, aes(x = Site, y = Phosphorus_total_mg_L)) +
+  geom_boxplot()
+``` 
+
+One thing you can see is there are multiple DUP sites. to see without these, we can remove thme using the `filter` function. 
+
+```{r}
+wq_dupsrm<- wq_units |>
+  filter(!grepl("DUP",Site)) |> # gets rid of duplicate sites
+  filter(!grepl("Dup",Site))
+```
+
+Now we will plot again with the new data with the duplicates sites removed. 
+
+```{r}
+ggplot(wq_dupsrm, aes(x = Site, y = Phosphorus_total_mg_L)) +
+  geom_boxplot()
+```
+
+One other thing the class found was an outlier for E. coli. This was often removed from analysis, but like the DUP sites, was not removed from the actual file we saved. 
+
+```{r}
+wq_units |>
+  select(Site, Date, E_coli_MPN_100mL) |>
+  arrange(-E_coli_MPN_100mL)|>
+  head()
+```
+
+To remove from an R object, we used the following code before running an analysis, which replaces the outlier value with an NA. 
+
+```{r}
+wq_units <- wq_units |>
+ mutate(E_coli_MPN_100mL = gsub('155310', NA, E_coli_MPN_100mL))
+```
+
+## Contact
+
+This code was used for BIO 231: Environmental Data and Analysis at William Peace University in the Spring of 2024. For questions, you can contact Mary Glover (mmglover@peace.edu). 
+
+All code for the class, which includes both the course lessons how to use R and the code used to anlayze the water quality data is in GitHub at <https://github.com/maryglover/wpu-bio231>
