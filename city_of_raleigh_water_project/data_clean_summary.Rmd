@@ -1,7 +1,9 @@
 ---
 title: "Water Quality Data Manipulation"
 author: "Mary Glover"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -230,6 +232,6 @@ wq_units <- wq_units |>
 
 ## Contact
 
-This code was used for BIO 231: Environmental Data and Analysis at William Peace University in the Spring of 2024. For questions, you can contact Mary Glover (mmglover@peace.edu). 
+This code was used for BIO 231: Environmental Topics and Analysis at William Peace University in the Spring of 2024. For questions, you can contact Mary Glover (mmglover@peace.edu). 
 
 All code for the class, which includes both the course lessons how to use R and the code used to anlayze the water quality data is in GitHub at <https://github.com/maryglover/wpu-bio231>
