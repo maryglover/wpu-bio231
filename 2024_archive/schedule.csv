@@ -1,0 +1,32 @@
+﻿Week,Date,Topic,Assignments
+1,Thur. Jan. 17,[Experimental design and introduction](lessons/introduction/introduction-lesson),Introduction in Slack (completed in class)
+2,Tues. Jan. 23,[Basic R](lessons/baseR/baseR-lesson) <br> *Last day to add/drop course*,[Download R and R studio](lessons/introduction/download-R.html)
+,Thur. Jan. 25,[Data manipulation and tidy data](lessons/data-manip/data-manip-lesson),Base R activity <br> Scientific article introduction
+3,Tues. Jan. 30,[Graphing data with ggplot](lessons/graphing/graphing-lesson),Data manipulation activity <br> Graphing lies reading
+,Thur. Feb. 1,[Statistics](lessons/statistics/statistics-lesson),Data manipulation part 2 <br> Scientific article results
+4,Tues. Feb. 6,"Data ethics guest speaker, [Dr. Quentin Read](www.quentinread.com) ",Graphing exercise
+,Thur. Feb. 8,[Raleigh water data analysis](lessons/water_qual_eda/water_eda_lesson) (catch up day),Scientific articles discussion
+5,Tues. Feb. 13,Review activity,Figure caption and results assignment
+,Thur. Feb. 15,**Exam 1**,
+6,Tues. Feb. 20,Introduction to water quality analysis,Pigeon House Branch water quality assignment
+,Thur. Feb. 22,Stream Physical Characteristics <br> ***Location: Meadow Brook Park***,Habitat assessment pre-lab quiz
+7,Tues. Feb. 27,Stream Chemical Characteristics <br> ***Location: Meadow Brook Park***,Lab notebook 1 <br> Chemical assessement pre-lab quiz
+,Thur. Feb. 29,Water quality lab <Location> Pressly 203,Lab notebook 2 <br> Nutrient lab pre-lab quiz
+8,Tues. Mar. 5,Water quality analysis <br> Location: Flowe 312,Lab notebook 3 <br> Methods write up
+,Thurs. Mar. 7,Results summary and scientific writing,Infographics due (group project)
+9,Mar. 11-15,*No class; Spring Break*,
+10,Tues. Mar. 19,[Introduction to class project](lessons/proposal/class_project),Scientific posters due
+,Thur. Mar. 21,[Advanced R](lessons/advanced-R/advanceR-lesson),[Proposals for data analysis](https://docs.google.com/document/d/1bZAyYZSs8-lzSv5oOVQaAlRg2JGVwNfc3INW-TPNfpY/edit?usp=sharing)
+11,Tues. Mar. 26,[Spatial data analysis/mapping](lessons/mapping/mapping-lesson),Advanced R activity
+,Wed. Mar. 27,*Last day to withdraw with a “W”*,
+,Thur. Mar. 28,Spatial data analysis/mapping,Mapping activity
+12,Tues. Apr. 2,Water quality project,Water quality check in
+,Thur. Apr. 4,Water quality project,
+13,Tues. Apr. 9,Water quality project,Water quality check in presentation
+,Thur. Apr. 11,Water quality project,Group analysis due
+14,Tues. Apr. 16,Water quality project and peer review,Final check in
+,Thur. Apr. 18,Final project work day,
+15,Tues. Apr. 23,No class; WPU Showcase,
+,Thurs. Apr. 25,**Presentation with the City of Raleigh Stormwater department**,
+16,Tues. Apr. 30,Aquatic invertebrate collections,Pre-lab quiz
+,"Friday, May 3 ",**Exam 2 at 8:00 AM**,

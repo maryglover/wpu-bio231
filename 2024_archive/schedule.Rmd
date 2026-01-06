@@ -1,0 +1,19 @@
+---
+title: "Course schedule"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+---
+
+<span style="color:green">*Updated: 2/12/2024*</span>.
+
+Schedule subject to change. All changes will be announced to students. 
+
+*Unless noted otherwise, all assignments are due at the* ***beginning*** *of class*
+
+```{r, echo=FALSE}
+schedule <- read.csv('schedule.csv')
+options(knitr.kable.NA=' ')
+knitr::kable(schedule)
+
+```

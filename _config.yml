@@ -1,5 +1,7 @@
 name: Environmental Topics and Analysis
-description: BIO 231, Environmental Topics and Analysis
+description: BIO 331, Environmental Topics and Analysis
 theme: jekyll-theme-cayman
 github:
   is_project_page: false
+nav_pages:
+     - bio231-syllabus.md
